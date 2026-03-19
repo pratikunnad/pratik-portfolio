@@ -1,3 +1,15 @@
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.from("#about-box", {
+    scrollTrigger: {
+        trigger: "#about-box",
+        start: "top 80%",
+    },
+    y: 50,
+    opacity: 0,
+    duration: 1
+});
+
 // Hero Animation
 
 gsap.from("#hero-title", {
