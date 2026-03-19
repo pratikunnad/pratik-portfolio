@@ -10,6 +10,18 @@ gsap.from("#about-box", {
     duration: 1
 });
 
+gsap.from(".project-card", {
+    scrollTrigger: {
+        trigger: "#projects",
+        start: "top 80%",
+    },
+    y: 50,
+    opacity: 0,
+    duration: 1,
+    stagger: 0.3
+});
+
+
 // Hero Animation
 
 gsap.from("#hero-title", {
