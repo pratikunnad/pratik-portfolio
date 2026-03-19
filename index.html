@@ -13,8 +13,12 @@
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- GSAP Animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
 </head>
-<body class="bg-black text-white font-sans">
+<body class="bg-black text-white font-sans overflow-x-hidden">
 
     <!-- NAVBAR -->
     <nav class="fixed top-0 left-0 w-full flex justify-between items-center px-8 py-4 bg-black z-50">
@@ -54,15 +58,15 @@
     <!-- HERO SECTION -->
     <section class="h-screen flex flex-col justify-center items-center text-center px-6 pt-20">
 
-        <h1 class="text-5xl md:text-7xl font-bold leading-tight">
+        <h1 id="hero-title" class="text-5xl md:text-7xl font-bold leading-tight">
             Hi, I'm <span class="text-blue-500">Pratik Unnad</span>
         </h1>
 
-        <p class="mt-6 text-lg md:text-xl text-gray-400 max-w-xl">
+        <p id="hero-text" class="mt-6 text-lg md:text-xl text-gray-400 max-w-xl">
             I build intelligent web systems and modern digital experiences.
         </p>
 
-        <button class="mt-8 px-6 py-3 bg-blue-500 hover:bg-blue-600 transition rounded-full text-white">
+        <button id="hero-btn" class="mt-8 px-6 py-3 bg-blue-500 hover:bg-blue-600 transition rounded-full text-white">
             View My Work
         </button>
 
