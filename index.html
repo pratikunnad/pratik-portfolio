@@ -16,12 +16,19 @@
 
     <!-- GSAP Animation -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+    html {
+        scroll-behavior: smooth;
+    }
+    </style>
 </head>
 <body class="bg-black text-white font-sans overflow-x-hidden">
 
     <!-- NAVBAR -->
-    <nav class="fixed top-0 left-0 w-full flex justify-between items-center px-8 py-4 bg-black z-50">
+    <nav class="fixed top-0 left-0 w-full flex justify-between items-center px-8 py-4 bg-black/70 backdrop-blur-md z-50">
 
         <h1 class="text-xl font-bold">Pratik Unnad</h1>
 
@@ -66,14 +73,15 @@
             I build intelligent web systems and modern digital experiences.
         </p>
 
-        <button id="hero-btn" class="mt-8 px-6 py-3 bg-blue-500 hover:bg-blue-600 transition rounded-full text-white">
+        <button onclick="document.getElementById('projects').scrollIntoView()" 
+        class="mt-8 px-6 py-3 bg-blue-500 hover:bg-blue-600 transition rounded-full text-white">
             View My Work
         </button>
 
     </section>
 
     <!-- ABOUT SECTION -->
-    <section id="about" class="min-h-screen flex items-center justify-center px-6">
+    <section id="about" class="min-h-screen flex items-center justify-center px-6 py-20">
 
         <div id="about-box" class="max-w-2xl text-center">
             <h2 class="text-4xl font-bold mb-4">About Me</h2>
@@ -85,33 +93,61 @@
     </section>
 
     <!-- PROJECTS SECTION -->
-<section id="projects" class="min-h-screen px-6 py-20">
+    <section id="projects" class="min-h-screen px-6 py-20">
 
     <h2 class="text-4xl font-bold text-center mb-12">Projects</h2>
 
-    <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+    <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
 
         <!-- PROJECT CARD -->
-        <div class="project-card bg-gray-900 p-6 rounded-xl hover:scale-105 transition duration-300 shadow-lg">
-            <h3 class="text-2xl font-semibold mb-2">BharatLearn-LMS</h3>
-            <p class="text-gray-400 mb-4">
-                A full-stack LMS built using Flask and MySQL with authentication and course management.
-            </p>
-            <a href="https://bharatlearn-lms.onrender.com/" class="text-blue-500 hover:underline">View Project →</a>
+        <div class="project-card relative bg-gray-900 rounded-xl overflow-hidden group shadow-lg hover:shadow-blue-500/30 transition duration-500">
+
+            <!-- IMAGE -->
+            <img src="assets/lms.jpeg" alt="LMS Project"
+                class="w-full h-60 object-cover group-hover:scale-110 transition duration-500">
+
+            <!-- OVERLAY -->
+            <div class="absolute inset-0 bg-black bg-opacity-70 opacity-0 
+                        group-hover:opacity-100 transition duration-500 
+                        flex flex-col justify-center items-center text-center px-4">
+
+                <h3 class="text-2xl font-semibold mb-2">BharatLearn-LMS</h3>
+
+                <p class="text-gray-300 text-sm mb-4">
+                    Flask + MySQL based LMS with authentication and course management.
+                </p>
+
+                <a href="https://bharatlearn-lms.onrender.com/" class="text-blue-400 hover:underline">View Project →</a>
+
+            </div>
+
         </div>
 
         <!-- PROJECT CARD -->
-        <div class="project-card bg-gray-900 p-6 rounded-xl hover:scale-105 transition duration-300 shadow-lg">
-            <h3 class="text-2xl font-semibold mb-2">Portfolio Website</h3>
-            <p class="text-gray-400 mb-4">
-                A modern animated personal portfolio built using Tailwind CSS and GSAP.
-            </p>
-            <a href="https://github.com/pratikunnad/pratik-portfolio" class="text-blue-500 hover:underline">View Project →</a>
+        <div class="project-card relative bg-gray-900 rounded-xl overflow-hidden group shadow-lg hover:shadow-blue-500/30 transition duration-500">
+
+            <!-- IMAGE -->
+            <img src="assets/portfolio.png" alt="Portfolio Project"
+                class="w-full h-60 object-cover group-hover:scale-110 transition duration-500">
+
+            <!-- OVERLAY -->
+            <div class="absolute inset-0 bg-black bg-opacity-70 opacity-0 
+                        group-hover:opacity-100 transition duration-500 
+                        flex flex-col justify-center items-center text-center px-4">
+
+                <h3 class="text-2xl font-semibold mb-2">Pratik Unnad</h3>
+
+                <p class="text-gray-300 text-sm mb-4">
+                    A modern animated personal portfolio built using Tailwind CSS and GSAP.
+                </p>
+
+                <a href="https://github.com/pratikunnad/pratik-portfolio" class="text-blue-400 hover:underline">View Project →</a>
+
+            </div>
+
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 </body>
 </html>
