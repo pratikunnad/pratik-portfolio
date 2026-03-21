@@ -25,24 +25,26 @@ gsap.from(".project-card", {
 // Hero Animation
 
 gsap.from("#hero-title", {
-    y: -50,
+    y: -40,
     opacity: 0,
-    duration: 1,
-    delay: 0.3
+    duration: 1.2,
+    ease: "power3.out"
 });
 
 gsap.from("#hero-text", {
-    y: 30,
+    y: 20,
     opacity: 0,
-    duration: 1,
-    delay: 0.6
+    duration: 1.2,
+    delay: 0.3,
+    ease: "power3.out"
 });
 
 gsap.from("#hero-btn", {
-    scale: 0.8,
+    y: 20,
     opacity: 0,
-    duration: 0.8,
-    delay: 0.9
+    duration: 1,
+    delay: 0.6,
+    ease: "power3.out"
 });
 
 gsap.from(".skill-card", {
