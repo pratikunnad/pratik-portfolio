@@ -34,9 +34,10 @@
 
         <ul class="flex gap-6 text-sm">
             <li><a href="#" class="hover:text-blue-500">Home</a></li>
-            <li><a href="#" class="hover:text-blue-500">About</a></li>
-            <li><a href="#" class="hover:text-blue-500">Projects</a></li>
-            <li><a href="#" class="hover:text-blue-500">Contact</a></li>
+            <li><a href="#about" class="hover:text-blue-500">About</a></li>
+            <li><a href="#projects" class="hover:text-blue-500">Projects</a></li>
+            <li><a href="#skills" class="hover:text-blue-500">Skills</a></li>
+            <li><a href="#contact" class="hover:text-blue-500">Contact</a></li>
         </ul>
 
     </nav>
@@ -63,7 +64,7 @@
     </div>
 
     <!-- HERO SECTION -->
-    <section class="h-screen flex flex-col justify-center items-center text-center px-6 pt-20">
+<section class="h-screen flex flex-col justify-center items-center text-center px-6 pt-20">
 
         <h1 id="hero-title" class="text-5xl md:text-7xl font-bold leading-tight">
             Hi, I'm <span class="text-blue-500">Pratik Unnad</span>
@@ -90,10 +91,10 @@
             </p>
         </div>
 
-    </section>
+</section>
 
     <!-- PROJECTS SECTION -->
-    <section id="projects" class="min-h-screen px-6 py-20">
+<section id="projects" class="min-h-screen px-6 py-20">
 
     <h2 class="text-4xl font-bold text-center mb-12">Projects</h2>
 
@@ -147,7 +148,79 @@
 
         </div>
 
-    </section>
+</section>
+
+    <!-- SKILLS SECTION -->
+<section id="skills" class="min-h-screen px-6 py-20">
+
+    <h2 class="text-4xl font-bold text-center mb-12">Skills</h2>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+
+        <!-- SKILL CARD -->
+        <div class="skill-card bg-gray-900 p-6 rounded-xl text-center hover:scale-105 transition duration-300 shadow-lg">
+            <i class="fab fa-python text-4xl text-blue-500 mb-3"></i>
+            <h3 class="text-lg font-semibold">Python</h3>
+        </div>
+
+        <div class="skill-card bg-gray-900 p-6 rounded-xl text-center hover:scale-105 transition duration-300 shadow-lg">
+            <i class="fas fa-server text-4xl text-blue-500 mb-3"></i>
+            <h3 class="text-lg font-semibold">Flask</h3>
+        </div>
+
+        <div class="skill-card bg-gray-900 p-6 rounded-xl text-center hover:scale-105 transition duration-300 shadow-lg">
+            <i class="fas fa-database text-4xl text-blue-500 mb-3"></i>
+            <h3 class="text-lg font-semibold">MySQL</h3>
+        </div>
+
+        <div class="skill-card bg-gray-900 p-6 rounded-xl text-center hover:scale-105 transition duration-300 shadow-lg">
+            <i class="fab fa-html5 text-4xl text-orange-500 mb-3"></i>
+            <h3 class="text-lg font-semibold">HTML</h3>
+        </div>
+
+        <div class="skill-card bg-gray-900 p-6 rounded-xl text-center hover:scale-105 transition duration-300 shadow-lg">
+            <i class="fab fa-css3-alt text-4xl text-blue-400 mb-3"></i>
+            <h3 class="text-lg font-semibold">CSS</h3>
+        </div>
+
+        <div class="skill-card bg-gray-900 p-6 rounded-xl text-center hover:scale-105 transition duration-300 shadow-lg">
+            <i class="fab fa-js text-4xl text-yellow-400 mb-3"></i>
+            <h3 class="text-lg font-semibold">JavaScript</h3>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CONTACT SECTION -->
+<section id="contact" class="min-h-screen px-6 py-20 flex flex-col items-center justify-center">
+
+    <h2 class="text-4xl font-bold mb-6">Contact Me</h2>
+
+    <p class="text-gray-400 mb-10 text-center max-w-md">
+        I'm open to opportunities, collaborations, and interesting projects. Feel free to reach out!
+    </p>
+
+    <!-- CONTACT FORM -->
+    <form class="w-full max-w-md flex flex-col gap-4">
+
+        <input type="text" placeholder="Your Name"
+            class="p-3 rounded bg-gray-900 text-white outline-none focus:ring-2 focus:ring-blue-500">
+
+        <input type="email" placeholder="Your Email"
+            class="p-3 rounded bg-gray-900 text-white outline-none focus:ring-2 focus:ring-blue-500">
+
+        <textarea rows="4" placeholder="Your Message"
+            class="p-3 rounded bg-gray-900 text-white outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+
+        <button type="submit"
+            class="bg-blue-500 hover:bg-blue-600 transition p-3 rounded text-white font-semibold">
+            Send Message
+        </button>
+
+    </form>
+
+</section>
 
 </body>
 </html>

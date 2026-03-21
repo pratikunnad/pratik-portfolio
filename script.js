@@ -44,3 +44,24 @@ gsap.from("#hero-btn", {
     duration: 0.8,
     delay: 0.9
 });
+
+gsap.from(".skill-card", {
+    scrollTrigger: {
+        trigger: "#skills",
+        start: "top 80%",
+    },
+    y: 50,
+    opacity: 0,
+    duration: 1,
+    stagger: 0.2
+});
+
+gsap.from("#contact form", {
+    scrollTrigger: {
+        trigger: "#contact",
+        start: "top 80%",
+    },
+    y: 50,
+    opacity: 0,
+    duration: 1
+});
