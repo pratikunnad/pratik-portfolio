@@ -118,17 +118,10 @@
       transform: scale(1.05);
     }
     
-    /* Certificate grid */
-    .cert-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
-    }
-    
-    /* Certificate image styling */
-    .cert-image {
+    /* Certificate & Project image styling */
+    .cert-image, .project-image {
       width: 100%;
-      height: 160px;
+      height: 180px;
       object-fit: cover;
       border-radius: 1rem;
       margin-bottom: 1rem;
@@ -136,12 +129,19 @@
       transition: transform 0.2s ease;
     }
     
-    body.light .cert-image {
+    body.light .cert-image, body.light .project-image {
       background-color: #e2e8f0;
     }
     
-    .cert-image:hover {
+    .cert-image:hover, .project-image:hover {
       transform: scale(1.02);
+    }
+    
+    /* Certificate grid */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
     }
     
     /* Navbar dark mode fix */
@@ -228,12 +228,12 @@
       </p>
       <div class="flex flex-wrap gap-4 justify-center mt-8">
         <a href="#projects" class="bg-teal-600 hover:bg-teal-500 transition px-6 py-2.5 rounded-full text-sm font-semibold shadow-lg text-white">View My Work</a>
-        <a href="./pratik_resume.pdf" class="border border-teal-500 text-teal-600 dark:text-teal-300 hover:bg-teal-500/20 transition px-6 py-2.5 rounded-full text-sm font-semibold">Download Resume</a>
+        <a href="./pratik_resume1.pdf" class="border border-teal-500 text-teal-600 dark:text-teal-300 hover:bg-teal-500/20 transition px-6 py-2.5 rounded-full text-sm font-semibold">Download Resume</a>
       </div>
     </div>
   </section>
 
-  <!-- Projects Section -->
+  <!-- Projects Section with Images -->
   <section id="projects" class="py-16 px-6 section-alt transition-colors duration-300">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-12 fade-up">
@@ -241,12 +241,12 @@
         <p class="text-gray-600 dark:text-gray-400 mt-2">A selection of my recent work</p>
       </div>
       <div class="grid md:grid-cols-2 gap-8">
+        <!-- Project 1 - BharatLearn with image -->
         <div class="glass-card p-6 fade-up">
-          <div class="w-12 h-12 rounded-full bg-teal-500/20 flex items-center justify-center mb-4">
-            <i class="fas fa-chalkboard-user text-teal-400 text-xl"></i>
-          </div>
-          <h3 class="text-xl font-bold">BharatLearn – Learning Management System</h3>
-          <p class="text-gray-500 dark:text-gray-300 text-sm mt-2">Nov 2025 – Feb 2026</p>
+          <!-- Project Image Placeholder -->
+          <img src="assets/lms.jpeg" alt="BharatLearn Project Screenshot" class="project-image">
+          <h3 class="text-xl font-bold mt-2">BharatLearn - Learning Management System</h3>
+          <p class="text-gray-500 dark:text-gray-300 text-sm mt-1">Nov 2025 - Feb 2026</p>
           <p class="text-gray-600 dark:text-gray-400 mt-3 text-sm leading-relaxed">Full-stack LMS with Flask and MySQL featuring authentication, course enrollment, progress tracking, streak system, and admin analytics dashboard. Tested with 500+ users.</p>
           <div class="flex flex-wrap gap-2 mt-4">
             <span class="skill-tag text-xs">Flask</span>
@@ -260,11 +260,16 @@
           </div>
         </div>
         
+        <!-- Project 2 - Coming Soon with image placeholder -->
         <div class="glass-card p-6 fade-up flex flex-col items-center justify-center text-center border-dashed border-teal-500/40">
-          <i class="fas fa-rocket text-4xl text-teal-400/60 mb-3"></i>
-          <p class="text-gray-600 dark:text-gray-400">More projects coming soon...</p>
+          <img src="https://placehold.co/600x400/1e293b/475569?text=Coming+Soon" alt="Coming Soon" class="project-image opacity-60">
+          <i class="fas fa-rocket text-4xl text-teal-400/60 mb-2"></i>
+          <p class="text-gray-600 dark:text-gray-400 font-medium">More projects coming soon...</p>
           <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">Stay tuned for more data-driven solutions</p>
         </div>
+      </div>
+      <div class="text-center mt-6 text-sm text-gray-500 dark:text-gray-500">
+        <i class="fas fa-image mr-1"></i> Tip: Replace the placeholder image URLs with your actual project screenshots
       </div>
     </div>
   </section>
@@ -352,33 +357,53 @@
         <p class="text-gray-600 dark:text-gray-400 mt-2">Continuous learning through recognized programs</p>
       </div>
       <div class="cert-grid">
-        <!-- Certificate 1 - Tata iQ (replace src with your actual certificate image) -->
+        <!-- Certificate 1 - Deloitte Data Analytics -->
         <div class="glass-card p-5 text-center fade-up">
-          <img src="https://placehold.co/400x160/1e293b/14b8a6?text=Tata+iQ+Certificate" alt="Tata iQ Certificate" class="cert-image">
-          <h3 class="font-bold">Tata iQ – GenAI Powered Data Analytics</h3>
+          <img src="assets/deloitte01.jpeg" alt="Deloitte Data Analytics Certificate" class="cert-image">
+          <h3 class="font-bold">Deloitte Australia - Data Analytics</h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Forage | Aug 2025</p>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Data analysis and business insights dashboards</p>
+        </div>
+
+      <!-- Certificate 2 - Deloitte Technology -->
+        <div class="glass-card p-5 text-center fade-up">
+          <img src="assets/deloitte02.jpeg" alt="Deloitte Technology Certificate" class="cert-image">
+          <h3 class="font-bold">Deloitte Australia - Technology Simulation</h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Forage | Oct 2025</p>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Dashboard proposals and coding solutions</p>
+        </div>
+
+        <!-- Certificate 3 - Tata iQ -->
+        <div class="glass-card p-5 text-center fade-up">
+          <img src="assets/tata01.jpeg" alt="Tata iQ Certificate" class="cert-image">
+          <h3 class="font-bold">Tata iQ - GenAI Powered Data Analytics</h3>
           <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Forage | Oct 2025</p>
           <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">AI-powered analytics, risk profiling, predictive modeling</p>
         </div>
         
-        <!-- Certificate 2 - Deloitte Technology (replace src with your actual certificate image) -->
+        <!-- Certificate 4 - British Airways Data Science  -->
         <div class="glass-card p-5 text-center fade-up">
-          <img src="https://placehold.co/400x160/1e293b/14b8a6?text=Deloitte+Technology+Certificate" alt="Deloitte Technology Certificate" class="cert-image">
-          <h3 class="font-bold">Deloitte Australia – Technology Simulation</h3>
-          <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Forage | Oct 2025</p>
-          <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Dashboard proposals and coding solutions</p>
+          <img src="assets/british_airways01.jpeg" alt="British Airways Data Science Certificate" class="cert-image">
+          <h3 class="font-bold">British Airways - Data Science</h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Forage | Nov 2025</p>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Analysed customer insights and built a predictive model to understand factors that influence buying behaviour</p>
         </div>
-        
-        <!-- Certificate 3 - Deloitte Data Analytics (replace src with your actual certificate image) -->
+
+        <!-- Certificate 5 - CTIGA  -->
         <div class="glass-card p-5 text-center fade-up">
-          <img src="https://placehold.co/400x160/1e293b/14b8a6?text=Deloitte+Data+Analytics+Certificate" alt="Deloitte Data Analytics Certificate" class="cert-image">
-          <h3 class="font-bold">Deloitte Australia – Data Analytics</h3>
-          <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Forage | Aug 2025</p>
-          <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Data analysis and business insights dashboards</p>
+          <img src="assets/ctiga01.jpeg" alt="CTIGA - Certified Threat Intelligence & Governance Analyst" class="cert-image">
+          <h3 class="font-bold">CTIGA - Certified Threat Intelligence & Governance Analyst</h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Red Team Leaders | Jan 2026</p>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Applying ethical, legal, and strategic frameworks to intelligence operations</p>
         </div>
-      </div>
-      
-      <div class="text-center mt-6 text-sm text-gray-500 dark:text-gray-500">
-        <i class="fas fa-image mr-1"></i> Tip: Replace the placeholder image URLs with your actual certificate images
+
+        <!-- Certificate 6 - Commonwealth Bank  -->
+        <div class="glass-card p-5 text-center fade-up">
+          <img src="assets/commonwealth_bank01.jpeg" alt="CTIGA - Certified Threat Intelligence & Governance Analyst" class="cert-image">
+          <h3 class="font-bold">Commonwealth Bank - Tech Explorer</h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Forage | Jan 2026</p>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Exploring the world of technology and innovation</p>
+        </div>
       </div>
     </div>
   </section>
@@ -419,7 +444,7 @@
 
   <!-- Footer -->
   <footer class="py-6 text-center text-gray-500 text-sm border-t transition-colors duration-300">
-    <p>© 2025 Pratik Unnad. All rights reserved.</p>
+    <p>© 2026 Pratik Unnad. All rights reserved.</p>
   </footer>
 
   <script>
@@ -428,7 +453,6 @@
     const themeToggleMobile = document.getElementById('themeToggleMobile');
     const body = document.body;
     
-    // Function to update both toggle icons and theme
     function setTheme(isDark) {
       if (isDark) {
         body.classList.remove('light');
@@ -455,7 +479,6 @@
       }
     }
     
-    // Load saved theme
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'light') {
       setTheme(false);
@@ -463,7 +486,6 @@
       setTheme(true);
     }
     
-    // Toggle function
     function toggleTheme() {
       if (body.classList.contains('dark')) {
         setTheme(false);
@@ -517,20 +539,26 @@
     });
   </script>
   
-  <!-- HOW TO ADD YOUR ACTUAL CERTIFICATE IMAGES:
-       1. Save your certificate images (JPEG/PNG) in a folder like "images/" or upload them online
-       2. Replace the placeholder `src="https://placehold.co/..."` with your actual image path
-       3. Examples:
-          - Local: src="images/tata-certificate.jpg"
-          - Online: src="https://yourwebsite.com/certificate.jpg"
-       4. Make sure the images are well-lit, clear, and ideally 400px wide by 160px tall
-       5. You can add more certificates by copying the entire `<div class="glass-card...">` block
+  <!-- HOW TO REPLACE PLACEHOLDER IMAGES:
+       PROJECT IMAGES:
+         - Replace src in project 1: "https://placehold.co/600x400/..." with your actual screenshot path
+         - Example: src="images/bharatlearn-dashboard.jpg"
+         - For the "Coming Soon" card, you can also replace with a future project image
+       
+       CERTIFICATE IMAGES:
+         - Replace src in each certificate card with your actual certificate image
+         - Example: src="images/tata-cert.jpg"
+       
+       IMAGE DIMENSIONS SUGGESTIONS:
+         - Project images: 600x400px (landscape)
+         - Certificate images: 400x160px (wider, like a banner)
+         - Use PNG or JPG, keep file sizes reasonable for fast loading
   -->
   
   <!-- PLACEHOLDERS TO REPLACE:
        - Social links: GitHub, LinkedIn, LeetCode URLs
        - Resume PDF path: ./pratik_resume.pdf
-       - Certificate images: replace the placeholder img src with your actual certificate images
+       - All image src attributes with your actual images
   -->
 </body>
 </html>
