@@ -144,6 +144,11 @@
       gap: 1.5rem;
     }
     
+    /* Hidden items for load more */
+    .hidden-item {
+      display: none;
+    }
+    
     /* Navbar dark mode fix */
     body.dark nav {
       background-color: rgba(3, 7, 18, 0.9);
@@ -155,22 +160,30 @@
       border-bottom-color: rgba(20, 184, 166, 0.2);
     }
     
-    /* Contact section text visibility */
+    /* Contact section text visibility - FIXED for better contrast */
     body.dark .contact-info-text {
-      color: #d1d5db;
+      color: #e5e7eb;
     }
     body.light .contact-info-text {
-      color: #4b5563;
+      color: #1f2937;
     }
     .contact-info-text i {
       color: #14b8a6;
       width: 1.25rem;
     }
     body.dark .languages-text {
-      color: #9ca3af;
+      color: #d1d5db;
     }
     body.light .languages-text {
-      color: #6b7280;
+      color: #4b5563;
+    }
+    
+    /* General text improvements for dark mode */
+    body.dark .text-gray-custom {
+      color: #cbd5e1;
+    }
+    body.dark .glass-card p, body.dark .glass-card .text-sm {
+      color: #cbd5e1;
     }
   </style>
 </head>
@@ -180,7 +193,7 @@
     <div class="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center">
       <a href="#" class="text-xl font-bold tracking-tight bg-gradient-to-r from-teal-300 to-cyan-400 bg-clip-text text-transparent">Pratik Unnad</a>
       
-      <!-- Desktop Menu (includes theme toggle after Contact) -->
+      <!-- Desktop Menu -->
       <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
         <a href="#home" class="nav-link hover:text-teal-400 transition">Home</a>
         <a href="#projects" class="nav-link hover:text-teal-400 transition">Projects</a>
@@ -188,13 +201,12 @@
         <a href="#skills" class="nav-link hover:text-teal-400 transition">Skills</a>
         <a href="#certifications" class="nav-link hover:text-teal-400 transition">Certifications</a>
         <a href="#contact" class="nav-link hover:text-teal-400 transition">Contact</a>
-        <!-- Theme Toggle Button for Desktop (after Contact) -->
         <button id="themeToggleDesktop" class="theme-toggle text-teal-400 text-xl focus:outline-none ml-2">
           <i class="fas fa-moon"></i>
         </button>
       </div>
       
-      <!-- Mobile Controls (Theme Toggle + Menu Button) -->
+      <!-- Mobile Controls -->
       <div class="flex items-center gap-4 md:hidden">
         <button id="themeToggleMobile" class="theme-toggle text-teal-400 text-xl focus:outline-none">
           <i class="fas fa-moon"></i>
@@ -205,7 +217,7 @@
       </div>
     </div>
     
-    <!-- Mobile Dropdown Menu -->
+    <!-- Mobile Dropdown -->
     <div id="mobileMenu" class="hidden md:hidden flex-col backdrop-blur-xl px-6 pb-4 space-y-2 text-sm border-t transition-colors duration-300">
       <a href="#home" class="mobile-link block py-2 hover:text-teal-400">Home</a>
       <a href="#projects" class="mobile-link block py-2 hover:text-teal-400">Projects</a>
@@ -215,6 +227,14 @@
       <a href="#contact" class="mobile-link block py-2 hover:text-teal-400">Contact</a>
     </div>
   </nav>
+
+  <!-- Sidebar -->
+  <div class="fixed right-6 top-1/2 transform -translate-y-1/2 bg-gray-900 bg-opacity-80 backdrop-blur-md px-3 py-4 rounded-full flex flex-col items-center gap-5 shadow-lg z-50">
+    <a href="https://github.com/pratikunnad" class="text-gray-400 hover:text-blue-500 transition text-xl"><i class="fab fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/pratikunnad/" class="text-gray-400 hover:text-blue-500 transition text-xl"><i class="fab fa-linkedin"></i></a>
+    <a href="https://www.instagram.com/pratik_unnad/" class="text-gray-400 hover:text-blue-500 transition text-xl"><i class="fab fa-instagram"></i></a>
+    <a href="mailto:pratikunnad@gmail.com" class="text-gray-400 hover:text-blue-500 transition text-xl"><i class="fas fa-envelope"></i></a>
+  </div>
 
   <!-- Hero Section -->
   <section id="home" class="pt-32 pb-20 px-6">
@@ -228,22 +248,21 @@
       </p>
       <div class="flex flex-wrap gap-4 justify-center mt-8">
         <a href="#projects" class="bg-teal-600 hover:bg-teal-500 transition px-6 py-2.5 rounded-full text-sm font-semibold shadow-lg text-white">View My Work</a>
-        <a href="https://drive.google.com/file/d/15XTunHF21Kz6_u-hN-ABAMS773bRJp_U/view?usp=sharing" class="border border-teal-500 text-teal-600 dark:text-teal-300 hover:bg-teal-500/20 transition px-6 py-2.5 rounded-full text-sm font-semibold">Download Resume</a>
+        <a href="https://drive.google.com/file/d/15XTunHF21Kz6_u-hN-ABAMS773bRJp_U/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="border border-teal-500 text-teal-600 dark:text-teal-300 hover:bg-teal-500/20 transition px-6 py-2.5 rounded-full text-sm font-semibold">Download Resume</a>
       </div>
     </div>
   </section>
 
-  <!-- Projects Section with Images -->
+  <!-- Projects Section with Load More -->
   <section id="projects" class="py-16 px-6 section-alt transition-colors duration-300">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-12 fade-up">
         <h2 class="text-3xl md:text-4xl font-bold">Featured Projects</h2>
         <p class="text-gray-600 dark:text-gray-400 mt-2">A selection of my recent work</p>
       </div>
-      <div class="grid md:grid-cols-2 gap-8">
-        <!-- Project 1 - BharatLearn with image -->
-        <div class="glass-card p-6 fade-up">
-          <!-- Project Image Placeholder -->
+      <div class="grid md:grid-cols-2 gap-8" id="projectsContainer">
+        <!-- Project 1 - Visible -->
+        <div class="glass-card p-6 fade-up project-item">
           <img src="assets/lms.jpeg" alt="BharatLearn Project Screenshot" class="project-image">
           <h3 class="text-xl font-bold mt-2">BharatLearn - Learning Management System</h3>
           <p class="text-gray-500 dark:text-gray-300 text-sm mt-1">Nov 2025 - Feb 2026</p>
@@ -255,26 +274,45 @@
             <span class="skill-tag text-xs">Full Stack</span>
           </div>
           <div class="flex gap-3 mt-5">
-            <a href="#" class="text-teal-600 dark:text-teal-400 text-sm border border-teal-500/50 px-3 py-1 rounded-full hover:bg-teal-500/20 transition">Live Demo</a>
-            <a href="#" class="text-teal-600 dark:text-teal-400 text-sm border border-teal-500/50 px-3 py-1 rounded-full hover:bg-teal-500/20 transition">GitHub</a>
+            <a href="https://bharatlearn-lms.onrender.com/" class="text-teal-600 dark:text-teal-400 text-sm border border-teal-500/50 px-3 py-1 rounded-full hover:bg-teal-500/20 transition">Live Demo</a>
+            <a href="https://github.com/pratikunnad/BharatLearn-LMS" class="text-teal-600 dark:text-teal-400 text-sm border border-teal-500/50 px-3 py-1 rounded-full hover:bg-teal-500/20 transition">GitHub</a>
           </div>
         </div>
         
-        <!-- Project 2 - Coming Soon with image placeholder -->
-        <div class="glass-card p-6 fade-up flex flex-col items-center justify-center text-center border-dashed border-teal-500/40">
-          <img src="https://placehold.co/600x400/1e293b/475569?text=Coming+Soon" alt="Coming Soon" class="project-image opacity-60">
-          <i class="fas fa-rocket text-4xl text-teal-400/60 mb-2"></i>
-          <p class="text-gray-600 dark:text-gray-400 font-medium">More projects coming soon...</p>
-          <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">Stay tuned for more data-driven solutions</p>
+        <!-- Project 2 - Visible (placeholder / upcoming) -->
+        <div class="glass-card p-6 fade-up project-item flex flex-col items-center justify-center text-center border-dashed border-teal-500/40">
+          <i class="fas fa-chart-line text-4xl text-teal-400/60 mb-3"></i>
+          <h3 class="text-xl font-bold">Sales Analytics Dashboard</h3>
+          <p class="text-gray-600 dark:text-gray-400 mt-2">Coming Soon</p>
+          <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">Interactive dashboard with Python, Pandas, and Plotly</p>
+        </div>
+        
+        <!-- Hidden projects (will show after clicking Load More) -->
+        <div class="glass-card p-6 fade-up project-item hidden-item">
+          <img src="https://placehold.co/600x400/1e293b/14b8a6?text=Customer+Churn+Analysis" alt="Churn Analysis" class="project-image">
+          <h3 class="text-xl font-bold mt-2">Customer Churn Prediction</h3>
+          <p class="text-gray-500 dark:text-gray-300 text-sm mt-1">Mar 2026 - Present</p>
+          <p class="text-gray-600 dark:text-gray-400 mt-3 text-sm leading-relaxed">Machine learning model to predict customer churn using logistic regression and random forest. Achieved 85% accuracy on test data.</p>
+          <div class="flex flex-wrap gap-2 mt-4">
+            <span class="skill-tag text-xs">Python</span>
+            <span class="skill-tag text-xs">Scikit-learn</span>
+            <span class="skill-tag text-xs">Pandas</span>
+          </div>
+          <div class="flex gap-3 mt-5">
+            <a href="#" class="text-teal-600 dark:text-teal-400 text-sm border border-teal-500/50 px-3 py-1 rounded-full hover:bg-teal-500/20 transition">GitHub</a>
+          </div>
         </div>
       </div>
-      <div class="text-center mt-6 text-sm text-gray-500 dark:text-gray-500">
-        <i class="fas fa-image mr-1"></i> Tip: Replace the placeholder image URLs with your actual project screenshots
+      
+      <div class="text-center mt-8">
+        <button id="loadMoreProjectsBtn" class="bg-teal-600/80 hover:bg-teal-600 text-white px-6 py-2 rounded-full text-sm font-semibold transition shadow-md">
+          <i class="fas fa-plus-circle mr-2"></i> Load More Projects
+        </button>
       </div>
     </div>
   </section>
 
-  <!-- Education Section -->
+  <!-- Education Section (unchanged) -->
   <section id="education" class="py-16 px-6 transition-colors duration-300">
     <div class="max-w-4xl mx-auto">
       <div class="text-center mb-10 fade-up">
@@ -308,7 +346,7 @@
     </div>
   </section>
 
-  <!-- Skills Section -->
+  <!-- Skills Section (unchanged) -->
   <section id="skills" class="py-16 px-6 section-alt transition-colors duration-300">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-10 fade-up">
@@ -349,66 +387,82 @@
     </div>
   </section>
 
-  <!-- Certifications Section - WITH IMAGES -->
+  <!-- Certifications Section with Load More (initially 6 visible, then more) -->
   <section id="certifications" class="py-16 px-6 transition-colors duration-300">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-10 fade-up">
         <h2 class="text-3xl md:text-4xl font-bold">Certifications & Achievements</h2>
         <p class="text-gray-600 dark:text-gray-400 mt-2">Continuous learning through recognized programs</p>
       </div>
-      <div class="cert-grid">
-        <!-- Certificate 1 - Deloitte Data Analytics -->
-        <div class="glass-card p-5 text-center fade-up">
-          <img src="assets/deloitte01.jpeg" alt="Deloitte Data Analytics Certificate" class="cert-image">
+      <div class="cert-grid" id="certificationsContainer">
+        <!-- Visible certificates (first 6) -->
+        <div class="glass-card p-5 text-center fade-up cert-item">
+          <img src="assets/deloitte01.jpeg" alt="Deloitte Data Analytics" class="cert-image">
           <h3 class="font-bold">Deloitte Australia - Data Analytics</h3>
           <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Forage | Aug 2025</p>
           <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Data analysis and business insights dashboards</p>
         </div>
-
-      <!-- Certificate 2 - Deloitte Technology -->
-        <div class="glass-card p-5 text-center fade-up">
-          <img src="assets/deloitte02.jpeg" alt="Deloitte Technology Certificate" class="cert-image">
+        <div class="glass-card p-5 text-center fade-up cert-item">
+          <img src="assets/deloitte02.jpeg" alt="Deloitte Technology" class="cert-image">
           <h3 class="font-bold">Deloitte Australia - Technology Simulation</h3>
           <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Forage | Oct 2025</p>
           <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Dashboard proposals and coding solutions</p>
         </div>
-
-        <!-- Certificate 3 - Tata iQ -->
-        <div class="glass-card p-5 text-center fade-up">
-          <img src="assets/tata01.jpeg" alt="Tata iQ Certificate" class="cert-image">
+        <div class="glass-card p-5 text-center fade-up cert-item">
+          <img src="assets/tata01.jpeg" alt="Tata iQ" class="cert-image">
           <h3 class="font-bold">Tata iQ - GenAI Powered Data Analytics</h3>
           <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Forage | Oct 2025</p>
           <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">AI-powered analytics, risk profiling, predictive modeling</p>
         </div>
-        
-        <!-- Certificate 4 - British Airways Data Science  -->
-        <div class="glass-card p-5 text-center fade-up">
-          <img src="assets/british_airways01.jpeg" alt="British Airways Data Science Certificate" class="cert-image">
+        <div class="glass-card p-5 text-center fade-up cert-item">
+          <img src="assets/british_airways01.jpeg" alt="British Airways" class="cert-image">
           <h3 class="font-bold">British Airways - Data Science</h3>
           <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Forage | Nov 2025</p>
-          <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Analysed customer insights and built a predictive model to understand factors that influence buying behaviour</p>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Analysed customer insights and built predictive model</p>
         </div>
-
-        <!-- Certificate 5 - CTIGA  -->
-        <div class="glass-card p-5 text-center fade-up">
-          <img src="assets/ctiga01.jpeg" alt="CTIGA - Certified Threat Intelligence & Governance Analyst" class="cert-image">
+        <div class="glass-card p-5 text-center fade-up cert-item">
+          <img src="assets/ctiga01.jpeg" alt="CTIGA" class="cert-image">
           <h3 class="font-bold">CTIGA - Certified Threat Intelligence & Governance Analyst</h3>
           <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Red Team Leaders | Jan 2026</p>
-          <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Applying ethical, legal, and strategic frameworks to intelligence operations</p>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Applying ethical, legal, and strategic frameworks</p>
         </div>
-
-        <!-- Certificate 6 - Commonwealth Bank  -->
-        <div class="glass-card p-5 text-center fade-up">
-          <img src="assets/commonwealth_bank01.jpeg" alt="CTIGA - Certified Threat Intelligence & Governance Analyst" class="cert-image">
+        <div class="glass-card p-5 text-center fade-up cert-item">
+          <img src="assets/commonwealth_bank01.jpeg" alt="Commonwealth Bank" class="cert-image">
           <h3 class="font-bold">Commonwealth Bank - Tech Explorer</h3>
           <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Forage | Jan 2026</p>
-          <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Exploring the world of technology and innovation</p>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Exploring technology and innovation</p>
         </div>
+        
+        <!-- Hidden certificates (will show after clicking Load More) -->
+        <div class="glass-card p-5 text-center fade-up cert-item hidden-item">
+          <img src="https://placehold.co/400x160/1e293b/14b8a6?text=Google+Data+Analytics" alt="Google Data Analytics" class="cert-image">
+          <h3 class="font-bold">Google Data Analytics Professional Certificate</h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Coursera | 2025</p>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Data cleaning, analysis, visualization with R, SQL, and Tableau</p>
+        </div>
+        <div class="glass-card p-5 text-center fade-up cert-item hidden-item">
+          <img src="https://placehold.co/400x160/1e293b/14b8a6?text=Python+for+Data+Science" alt="Python for Data Science" class="cert-image">
+          <h3 class="font-bold">IBM Python for Data Science</h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">IBM | 2025</p>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Data manipulation, visualization, and machine learning with Python</p>
+        </div>
+        <div class="glass-card p-5 text-center fade-up cert-item hidden-item">
+          <img src="https://placehold.co/400x160/1e293b/14b8a6?text=SQL+Advanced" alt="SQL Advanced" class="cert-image">
+          <h3 class="font-bold">Advanced SQL for Data Analysis</h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">HackerRank | 2025</p>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Complex queries, window functions, query optimization</p>
+        </div>
+      </div>
+      
+      <div class="text-center mt-8">
+        <button id="loadMoreCertsBtn" class="bg-teal-600/80 hover:bg-teal-600 text-white px-6 py-2 rounded-full text-sm font-semibold transition shadow-md">
+          <i class="fas fa-plus-circle mr-2"></i> Load More Certifications
+        </button>
       </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- Contact Section (text visibility fixed) -->
   <section id="contact" class="py-16 px-6 section-alt transition-colors duration-300">
     <div class="max-w-4xl mx-auto text-center">
       <div class="fade-up">
@@ -425,9 +479,10 @@
           </a>
         </div>
         <div class="flex justify-center gap-6 mb-10">
-          <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-teal-400 text-2xl transition"><i class="fab fa-github"></i></a>
-          <a href="#" class="text-gray-500 dark:text-teal-400 hover:text-teal-400 text-2xl transition"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-teal-400 text-2xl transition"><i class="fas fa-code"></i></a>
+          <a href="https://github.com/pratikunnad" class="text-gray-500 dark:text-gray-400 hover:text-teal-400 text-2xl transition"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/pratikunnad/" class="text-gray-500 dark:text-teal-400 hover:text-teal-400 text-2xl transition"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.instagram.com/pratik_unnad/" class="text-gray-500 dark:text-teal-400 hover:text-teal-400 text-2xl transition"><i class="fab fa-instagram"></i></a>
+          <a href="https://leetcode.com/u/pratikunnad/" class="text-gray-500 dark:text-gray-400 hover:text-teal-400 text-2xl transition"><i class="fas fa-code"></i></a>
         </div>
         
         <div class="glass-card p-6 max-w-md mx-auto">
@@ -448,7 +503,7 @@
   </footer>
 
   <script>
-    // Dark/Light Mode Toggle (for both desktop and mobile buttons)
+    // Dark/Light Mode Toggle
     const themeToggleDesktop = document.getElementById('themeToggleDesktop');
     const themeToggleMobile = document.getElementById('themeToggleMobile');
     const body = document.body;
@@ -480,18 +535,12 @@
     }
     
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-      setTheme(false);
-    } else {
-      setTheme(true);
-    }
+    if (savedTheme === 'light') setTheme(false);
+    else setTheme(true);
     
     function toggleTheme() {
-      if (body.classList.contains('dark')) {
-        setTheme(false);
-      } else {
-        setTheme(true);
-      }
+      if (body.classList.contains('dark')) setTheme(false);
+      else setTheme(true);
     }
     
     if (themeToggleDesktop) themeToggleDesktop.addEventListener('click', toggleTheme);
@@ -509,7 +558,7 @@
     }, { threshold: 0.15 });
     fadeElements.forEach(el => observer.observe(el));
     
-    // Active nav highlight on scroll
+    // Active nav highlight
     const sections = document.querySelectorAll("section");
     const navLinks = document.querySelectorAll(".nav-link");
     function updateActiveNav() {
@@ -537,28 +586,38 @@
     document.querySelectorAll(".mobile-link").forEach(link => {
       link.addEventListener("click", () => mobileMenu.classList.add("hidden"));
     });
+    
+    // Load More Projects functionality
+    const loadMoreProjectsBtn = document.getElementById('loadMoreProjectsBtn');
+    const hiddenProjects = document.querySelectorAll('#projectsContainer .project-item.hidden-item');
+    let projectsExpanded = false;
+    loadMoreProjectsBtn.addEventListener('click', () => {
+      if (!projectsExpanded) {
+        hiddenProjects.forEach(proj => proj.classList.remove('hidden-item'));
+        loadMoreProjectsBtn.innerHTML = '<i class="fas fa-minus-circle mr-2"></i> Show Less';
+        projectsExpanded = true;
+      } else {
+        hiddenProjects.forEach(proj => proj.classList.add('hidden-item'));
+        loadMoreProjectsBtn.innerHTML = '<i class="fas fa-plus-circle mr-2"></i> Load More Projects';
+        projectsExpanded = false;
+      }
+    });
+    
+    // Load More Certifications functionality
+    const loadMoreCertsBtn = document.getElementById('loadMoreCertsBtn');
+    const hiddenCerts = document.querySelectorAll('#certificationsContainer .cert-item.hidden-item');
+    let certsExpanded = false;
+    loadMoreCertsBtn.addEventListener('click', () => {
+      if (!certsExpanded) {
+        hiddenCerts.forEach(cert => cert.classList.remove('hidden-item'));
+        loadMoreCertsBtn.innerHTML = '<i class="fas fa-minus-circle mr-2"></i> Show Less';
+        certsExpanded = true;
+      } else {
+        hiddenCerts.forEach(cert => cert.classList.add('hidden-item'));
+        loadMoreCertsBtn.innerHTML = '<i class="fas fa-plus-circle mr-2"></i> Load More Certifications';
+        certsExpanded = false;
+      }
+    });
   </script>
-  
-  <!-- HOW TO REPLACE PLACEHOLDER IMAGES:
-       PROJECT IMAGES:
-         - Replace src in project 1: "https://placehold.co/600x400/..." with your actual screenshot path
-         - Example: src="images/bharatlearn-dashboard.jpg"
-         - For the "Coming Soon" card, you can also replace with a future project image
-       
-       CERTIFICATE IMAGES:
-         - Replace src in each certificate card with your actual certificate image
-         - Example: src="images/tata-cert.jpg"
-       
-       IMAGE DIMENSIONS SUGGESTIONS:
-         - Project images: 600x400px (landscape)
-         - Certificate images: 400x160px (wider, like a banner)
-         - Use PNG or JPG, keep file sizes reasonable for fast loading
-  -->
-  
-  <!-- PLACEHOLDERS TO REPLACE:
-       - Social links: GitHub, LinkedIn, LeetCode URLs
-       - Resume PDF path: ./pratik_resume.pdf
-       - All image src attributes with your actual images
-  -->
 </body>
 </html>
