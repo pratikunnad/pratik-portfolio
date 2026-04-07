@@ -7,7 +7,7 @@
   <!-- Google Fonts + Tailwind CSS -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome 6 -->
+  <!-- Font Awesome 6 (free) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -123,6 +123,25 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 1.5rem;
+    }
+    
+    /* Certificate image styling */
+    .cert-image {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+      background-color: #1e293b;
+      transition: transform 0.2s ease;
+    }
+    
+    body.light .cert-image {
+      background-color: #e2e8f0;
+    }
+    
+    .cert-image:hover {
+      transform: scale(1.02);
     }
     
     /* Navbar dark mode fix */
@@ -325,7 +344,7 @@
     </div>
   </section>
 
-  <!-- Certifications Section -->
+  <!-- Certifications Section - WITH IMAGES -->
   <section id="certifications" class="py-16 px-6 transition-colors duration-300">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-10 fade-up">
@@ -333,30 +352,49 @@
         <p class="text-gray-600 dark:text-gray-400 mt-2">Continuous learning through recognized programs</p>
       </div>
       <div class="cert-grid">
+        <!-- Certificate 1 - Tata iQ (replace src with your actual certificate image) -->
         <div class="glass-card p-5 text-center fade-up">
-          <i class="fas fa-chart-line text-3xl text-teal-400 mb-3"></i>
+          <img src="https://placehold.co/400x160/1e293b/14b8a6?text=Tata+iQ+Certificate" alt="Tata iQ Certificate" class="cert-image">
           <h3 class="font-bold">Tata iQ – GenAI Powered Data Analytics</h3>
           <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Forage | Oct 2025</p>
           <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">AI-powered analytics, risk profiling, predictive modeling</p>
         </div>
         
+        <!-- Certificate 2 - Deloitte Technology (replace src with your actual certificate image) -->
         <div class="glass-card p-5 text-center fade-up">
-          <i class="fas fa-laptop-code text-3xl text-teal-400 mb-3"></i>
+          <img src="https://placehold.co/400x160/1e293b/14b8a6?text=Deloitte+Technology+Certificate" alt="Deloitte Technology Certificate" class="cert-image">
           <h3 class="font-bold">Deloitte Australia – Technology Simulation</h3>
           <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Forage | Oct 2025</p>
           <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Dashboard proposals and coding solutions</p>
         </div>
         
+        <!-- Certificate 3 - Deloitte Data Analytics (replace src with your actual certificate image) -->
         <div class="glass-card p-5 text-center fade-up">
-          <i class="fas fa-chart-bar text-3xl text-teal-400 mb-3"></i>
+          <img src="https://placehold.co/400x160/1e293b/14b8a6?text=Deloitte+Data+Analytics+Certificate" alt="Deloitte Data Analytics Certificate" class="cert-image">
           <h3 class="font-bold">Deloitte Australia – Data Analytics</h3>
           <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Forage | Aug 2025</p>
           <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Data analysis and business insights dashboards</p>
         </div>
+        
+        <!-- ============================================= -->
+        <!-- ADD MORE CERTIFICATES WITH IMAGES BELOW        -->
+        <!-- Just copy the block above and change:          -->
+        <!-- - src attribute to your image path/URL        -->
+        <!-- - alt text, title, description, date          -->
+        <!-- ============================================= -->
+        
+        <!-- Example for adding a 4th certificate:
+        <div class="glass-card p-5 text-center fade-up">
+          <img src="images/my-certificate.jpg" alt="My Certificate" class="cert-image">
+          <h3 class="font-bold">Certificate Title Here</h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Issuer | Date</p>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Description of what you learned</p>
+        </div>
+        -->
       </div>
       
       <div class="text-center mt-6 text-sm text-gray-500 dark:text-gray-500">
-        <i class="fas fa-info-circle mr-1"></i> Tip: You can add more certificates by copying the card div above
+        <i class="fas fa-image mr-1"></i> Tip: Replace the placeholder image URLs with your actual certificate images
       </div>
     </div>
   </section>
@@ -414,7 +452,6 @@
         if (themeToggleDesktop) themeToggleDesktop.innerHTML = '<i class="fas fa-moon"></i>';
         if (themeToggleMobile) themeToggleMobile.innerHTML = '<i class="fas fa-moon"></i>';
         localStorage.setItem('theme', 'dark');
-        // Update mobile menu background
         const mobileMenu = document.getElementById('mobileMenu');
         if (mobileMenu) {
           mobileMenu.classList.add('bg-[#0a0f1a]/95');
@@ -451,7 +488,6 @@
       }
     }
     
-    // Add event listeners
     if (themeToggleDesktop) themeToggleDesktop.addEventListener('click', toggleTheme);
     if (themeToggleMobile) themeToggleMobile.addEventListener('click', toggleTheme);
     
@@ -496,5 +532,21 @@
       link.addEventListener("click", () => mobileMenu.classList.add("hidden"));
     });
   </script>
+  
+  <!-- HOW TO ADD YOUR ACTUAL CERTIFICATE IMAGES:
+       1. Save your certificate images (JPEG/PNG) in a folder like "images/" or upload them online
+       2. Replace the placeholder `src="https://placehold.co/..."` with your actual image path
+       3. Examples:
+          - Local: src="images/tata-certificate.jpg"
+          - Online: src="https://yourwebsite.com/certificate.jpg"
+       4. Make sure the images are well-lit, clear, and ideally 400px wide by 160px tall
+       5. You can add more certificates by copying the entire `<div class="glass-card...">` block
+  -->
+  
+  <!-- PLACEHOLDERS TO REPLACE:
+       - Social links: GitHub, LinkedIn, LeetCode URLs
+       - Resume PDF path: ./pratik_resume.pdf
+       - Certificate images: replace the placeholder img src with your actual certificate images
+  -->
 </body>
 </html>
