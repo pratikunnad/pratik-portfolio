@@ -7,12 +7,6 @@
   <title>Pratik Unnad | Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!--
-    FONT PAIRING — classy editorial stack:
-    • Playfair Display  → headings  (high-contrast serif, editorial intelligence)
-    • Outfit            → body      (geometric, airy, highly legible)
-    • JetBrains Mono    → accents   (credential IDs, stat numbers, tech tags)
-  -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -34,28 +28,18 @@
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    /* ── HEADINGS — Playfair Display gives editorial gravitas ── */
     h1, h2, h3, .font-display {
       font-family: 'Playfair Display', serif;
       letter-spacing: -0.02em;
     }
 
-    /* ── MONO — credential IDs, stat numbers, tech tags ── */
     .font-mono, code, .cert-id, .stat-num {
       font-family: 'JetBrains Mono', monospace;
     }
 
-    /* ── THEMES ── */
-    body.dark {
-      background-color: #030712;
-      color: #e2e8f0;
-    }
-    body.light {
-      background-color: #f8fafc;
-      color: #0f172a;
-    }
+    body.dark { background-color: #030712; color: #e2e8f0; }
+    body.light { background-color: #f8fafc; color: #0f172a; }
 
-    /* ── SCROLLBAR (FIX: removed body.dark prefix — it doesn't work on pseudo-elements) ── */
     ::-webkit-scrollbar { width: 5px; }
     ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
@@ -66,7 +50,7 @@
       transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     }
     body.dark .glass-card {
-      background: rgba(15, 23, 38, 0.85);
+      background: rgba(15,23,38,0.85);
       backdrop-filter: blur(14px);
       border: 1px solid var(--accent-border);
       box-shadow: 0 4px 24px rgba(0,0,0,0.35);
@@ -83,7 +67,6 @@
       box-shadow: 0 12px 32px rgba(20,184,166,0.12);
     }
 
-    /* ── SECTION ALT ── */
     body.dark .section-alt { background-color: #070d1a; }
     body.light .section-alt { background-color: #f1f5f9; }
 
@@ -98,218 +81,176 @@
       transition: all 0.2s;
       display: inline-block;
     }
-    body.dark .skill-tag {
-      background: var(--accent-dim);
-      border: 1px solid var(--accent-border);
-      color: #cbd5e1;
-    }
-    body.light .skill-tag {
-      background: rgba(20,184,166,0.08);
-      border: 1px solid rgba(20,184,166,0.3);
-      color: #0f4d47;
-    }
-    .skill-tag:hover {
-      background: rgba(20,184,166,0.3);
-      transform: scale(1.04);
-    }
+    body.dark .skill-tag { background: var(--accent-dim); border: 1px solid var(--accent-border); color: #cbd5e1; }
+    body.light .skill-tag { background: rgba(20,184,166,0.08); border: 1px solid rgba(20,184,166,0.3); color: #0f4d47; }
+    .skill-tag:hover { background: rgba(20,184,166,0.3); transform: scale(1.04); }
 
     /* ── NAV ── */
-    body.dark nav {
-      background-color: rgba(3,7,18,0.88);
-      border-bottom-color: var(--accent-border);
-    }
-    body.light nav {
-      background-color: rgba(248,250,252,0.92);
-      border-bottom-color: rgba(20,184,166,0.2);
-    }
+    body.dark nav { background-color: rgba(3,7,18,0.88); border-bottom-color: var(--accent-border); }
+    body.light nav { background-color: rgba(248,250,252,0.92); border-bottom-color: rgba(20,184,166,0.2); }
+    nav a, nav button { font-family: 'Outfit', sans-serif; }
 
     /* ── FADE UP ── */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
-    }
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
     /* ── TYPED CURSOR ── */
-    .typed-cursor {
-      display: inline-block;
-      animation: blink 1s step-end infinite;
-      color: var(--accent);
-      font-weight: 300;
-    }
+    .typed-cursor { display: inline-block; animation: blink 1s step-end infinite; color: var(--accent); font-weight: 300; }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
     /* ── HERO GLOW ── */
     .hero-glow {
-      position: absolute;
-      width: 500px; height: 500px;
-      border-radius: 50%;
+      position: absolute; width: 500px; height: 500px; border-radius: 50%;
       background: radial-gradient(circle, rgba(20,184,166,0.07) 0%, transparent 70%);
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
+      top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none;
     }
 
     /* ── TIMELINE ── */
-    .timeline-line {
-      position: absolute;
-      left: 0; top: 12px; bottom: 0;
-      width: 2px;
-      background: linear-gradient(180deg, var(--accent), transparent);
-    }
-    .timeline-dot {
-      position: absolute;
-      left: -5px; top: 14px;
-      width: 12px; height: 12px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 3px rgba(20,184,166,0.2);
-    }
+    .timeline-line { position: absolute; left: 0; top: 12px; bottom: 0; width: 2px; background: linear-gradient(180deg, var(--accent), transparent); }
+    .timeline-dot { position: absolute; left: -5px; top: 14px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px rgba(20,184,166,0.2); }
 
     /* ── CERT + PROJECT IMAGES ── */
     .cert-image, .project-image {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 0.85rem;
-      margin-bottom: 1rem;
-      transition: transform 0.3s ease;
-      display: block;
+      width: 100%; height: 200px; object-fit: cover;
+      border-radius: 0.85rem; margin-bottom: 1rem;
+      transition: transform 0.3s ease; display: block;
     }
-    body.dark .cert-image, body.dark .project-image {
-      background-color: #1e293b;
-    }
-    body.light .cert-image, body.light .project-image {
-      background-color: #e2e8f0;
-    }
+    body.dark .cert-image, body.dark .project-image { background-color: #1e293b; }
+    body.light .cert-image, body.light .project-image { background-color: #e2e8f0; }
     .cert-image:hover, .project-image:hover { transform: scale(1.025); }
 
-    /* ── CERT GRID ── */
-    .cert-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-
-    /* ── HIDDEN ITEMS ── */
+    .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
     .hidden-item { display: none !important; }
 
     /* ── BACK TO TOP ── */
     #backToTop {
-      position: fixed;
-      bottom: 2rem; right: 2rem;
-      width: 44px; height: 44px;
-      border-radius: 12px;
-      background: var(--accent);
-      color: #000;
-      border: none;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem;
-      z-index: 99;
-      opacity: 0; pointer-events: none;
-      transform: translateY(8px);
-      transition: opacity 0.3s, transform 0.3s;
-      box-shadow: 0 4px 16px rgba(20,184,166,0.35);
+      position: fixed; bottom: 2rem; right: 2rem;
+      width: 44px; height: 44px; border-radius: 12px;
+      background: var(--accent); color: #000; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; font-size: 1rem;
+      z-index: 99; opacity: 0; pointer-events: none; transform: translateY(8px);
+      transition: opacity 0.3s, transform 0.3s; box-shadow: 0 4px 16px rgba(20,184,166,0.35);
     }
     #backToTop.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
     #backToTop:hover { background: var(--accent-bright); transform: translateY(-3px); }
 
     /* ── SIDEBAR ── */
     .sidebar {
-      position: fixed;
-      right: 1.25rem; top: 50%;
-      transform: translateY(-50%);
-      z-index: 50;
-      display: flex; flex-direction: column;
-      align-items: center; gap: 1.1rem;
-      padding: 0.9rem 0.65rem;
-      border-radius: 9999px;
+      position: fixed; right: 1.25rem; top: 50%; transform: translateY(-50%);
+      z-index: 50; display: flex; flex-direction: column; align-items: center; gap: 1.1rem;
+      padding: 0.9rem 0.65rem; border-radius: 9999px;
     }
-    body.dark .sidebar {
-      background: rgba(15,23,38,0.75);
-      border: 1px solid var(--accent-border);
-      backdrop-filter: blur(12px);
-    }
-    body.light .sidebar {
-      background: rgba(255,255,255,0.85);
-      border: 1px solid rgba(20,184,166,0.2);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-    }
-    .sidebar a {
-      transition: color 0.2s, transform 0.2s;
-    }
+    body.dark .sidebar { background: rgba(15,23,38,0.75); border: 1px solid var(--accent-border); backdrop-filter: blur(12px); }
+    body.light .sidebar { background: rgba(255,255,255,0.85); border: 1px solid rgba(20,184,166,0.2); backdrop-filter: blur(12px); box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+    .sidebar a { transition: color 0.2s, transform 0.2s; }
     .sidebar a:hover { transform: scale(1.2); }
 
-    /* ── ABOUT STAT CARDS ── */
-    .stat-card {
-      text-align: center;
-      padding: 1.1rem 0.75rem;
-    }
+    /* ── STAT CARDS ── */
+    .stat-card { text-align: center; padding: 1.1rem 0.75rem; }
     .stat-num {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 1.9rem;
-      font-weight: 500;
-      color: var(--accent);
-      letter-spacing: -0.03em;
+      font-size: 1.9rem; font-weight: 500;
+      color: var(--accent); letter-spacing: -0.03em;
+      display: inline-block; min-width: 3ch;
     }
 
     /* ── CONTACT FORM ── */
     .contact-input {
-      width: 100%;
-      padding: 0.7rem 1rem;
-      border-radius: 0.75rem;
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.9rem;
-      outline: none;
-      transition: border-color 0.2s;
+      width: 100%; padding: 0.7rem 1rem; border-radius: 0.75rem;
+      font-family: 'Outfit', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.2s;
     }
-    body.dark .contact-input {
-      background: rgba(15,23,38,0.8);
-      border: 1px solid var(--accent-border);
-      color: #e2e8f0;
-    }
-    body.light .contact-input {
-      background: #fff;
-      border: 1px solid rgba(20,184,166,0.3);
-      color: #0f172a;
-    }
+    body.dark .contact-input { background: rgba(15,23,38,0.8); border: 1px solid var(--accent-border); color: #e2e8f0; }
+    body.light .contact-input { background: #fff; border: 1px solid rgba(20,184,166,0.3); color: #0f172a; }
     .contact-input:focus { border-color: var(--accent); }
     .contact-input::placeholder { color: #64748b; }
 
     /* ── SECTION LABELS ── */
-    .section-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-
-    /* ── SECTION LABELS ── */
     .section-label-mono {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.68rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
+      font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
     }
-
-    /* ── NAV LINKS ── */
-    nav a, nav button { font-family: 'Outfit', sans-serif; }
 
     /* ── FOOTER ── */
-    body.dark footer {
-      border-top-color: var(--accent-border);
-    }
-    body.light footer {
-      border-top-color: rgba(20,184,166,0.2);
-    }
+    body.dark footer { border-top-color: var(--accent-border); }
+    body.light footer { border-top-color: rgba(20,184,166,0.2); }
 
-    /* ── MOBILE: hide sidebar ── */
+    /* ════════════════════════════════════
+       ABOUT PHOTO — new styles
+    ════════════════════════════════════ */
+    .about-photo-wrap {
+      position: relative;
+      width: 220px;
+      flex-shrink: 0;
+      margin: 0 auto;
+    }
+    /* Rotating teal border ring */
+    .about-photo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 1.75rem;
+      background: linear-gradient(135deg, var(--accent), transparent 50%, var(--accent2, #0ea5e9));
+      animation: ring-spin 6s linear infinite;
+      z-index: 0;
+      opacity: 0.6;
+    }
+    @keyframes ring-spin { to { transform: rotate(360deg); } }
+    /* Static border underneath so the ring doesn't show gap */
+    .about-photo-wrap::after {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 1.6rem;
+      background: var(--bg-base, #030712);
+      z-index: 1;
+    }
+    body.light .about-photo-wrap::after { background: #f8fafc; }
+
+    .about-photo {
+      position: relative;
+      z-index: 2;
+      width: 220px; height: 260px;
+      border-radius: 1.5rem;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      border: 2px solid var(--accent-border);
+    }
+    /* Placeholder shown when image is missing */
+    .about-photo-placeholder {
+      position: relative;
+      z-index: 2;
+      width: 220px; height: 260px;
+      border-radius: 1.5rem;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 10px; font-size: 0.75rem; text-align: center; padding: 1.5rem;
+      border: 2px dashed var(--accent-border);
+      color: #64748b;
+    }
+    body.dark .about-photo-placeholder { background: rgba(15,23,38,0.6); }
+    body.light .about-photo-placeholder { background: rgba(241,245,249,0.8); }
+
+    /* Floating badge on photo */
+    .about-photo-badge {
+      position: absolute;
+      bottom: -14px; left: 50%; transform: translateX(-50%);
+      z-index: 3;
+      white-space: nowrap;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      padding: 0.3rem 0.9rem;
+      border-radius: 9999px;
+      border: 1px solid var(--accent-border);
+    }
+    body.dark .about-photo-badge { background: rgba(15,23,38,0.95); color: var(--accent); }
+    body.light .about-photo-badge { background: #fff; color: var(--accent); box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+
     @media (max-width: 768px) {
       .sidebar { display: none; }
+      .about-photo-wrap { width: 180px; }
+      .about-photo, .about-photo-placeholder { width: 180px; height: 215px; }
     }
   </style>
 </head>
@@ -319,8 +260,6 @@
 <nav class="fixed top-0 left-0 w-full z-50 backdrop-blur-md border-b transition-colors duration-300">
   <div class="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center">
     <a href="#home" class="text-xl font-bold tracking-tight bg-gradient-to-r from-teal-300 to-cyan-400 bg-clip-text text-transparent" style="font-family:'Playfair Display',serif;font-style:italic;letter-spacing:-0.01em">Pratik Unnad</a>
-
-    <!-- Desktop links -->
     <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
       <a href="#home"           class="nav-link hover:text-teal-400 transition">Home</a>
       <a href="#about"          class="nav-link hover:text-teal-400 transition">About</a>
@@ -329,23 +268,13 @@
       <a href="#certifications" class="nav-link hover:text-teal-400 transition">Certifications</a>
       <a href="#education"      class="nav-link hover:text-teal-400 transition">Education</a>
       <a href="#contact"        class="nav-link hover:text-teal-400 transition">Contact</a>
-      <button id="themeToggleDesktop" class="text-teal-400 text-lg focus:outline-none ml-2 transition hover:scale-110">
-        <i class="fas fa-moon"></i>
-      </button>
+      <button id="themeToggleDesktop" class="text-teal-400 text-lg focus:outline-none ml-2 transition hover:scale-110"><i class="fas fa-moon"></i></button>
     </div>
-
-    <!-- Mobile controls -->
     <div class="flex items-center gap-4 md:hidden">
-      <button id="themeToggleMobile" class="text-teal-400 text-lg focus:outline-none transition hover:scale-110">
-        <i class="fas fa-moon"></i>
-      </button>
-      <button id="menuBtn" class="text-teal-400 text-xl focus:outline-none">
-        <i class="fas fa-bars"></i>
-      </button>
+      <button id="themeToggleMobile" class="text-teal-400 text-lg focus:outline-none transition hover:scale-110"><i class="fas fa-moon"></i></button>
+      <button id="menuBtn" class="text-teal-400 text-xl focus:outline-none"><i class="fas fa-bars"></i></button>
     </div>
   </div>
-
-  <!-- Mobile dropdown -->
   <div id="mobileMenu" class="hidden md:hidden flex-col px-6 pb-4 pt-2 space-y-1 text-sm border-t transition-colors duration-300" style="border-top-color:var(--accent-border)">
     <a href="#home"           class="mobile-link block py-2 hover:text-teal-400">Home</a>
     <a href="#about"          class="mobile-link block py-2 hover:text-teal-400">About</a>
@@ -359,40 +288,33 @@
 
 <!-- ════════════ SIDEBAR ════════════ -->
 <div class="sidebar">
-  <a href="https://github.com/pratikunnad"               target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-teal-400 text-lg" title="GitHub"><i class="fab fa-github"></i></a>
-  <a href="https://www.linkedin.com/in/pratikunnad/"     target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-teal-400 text-lg" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-  <a href="https://www.instagram.com/pratik_unnad/"      target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-teal-400 text-lg" title="Instagram"><i class="fab fa-instagram"></i></a>
-  <a href="https://leetcode.com/u/pratikunnad/"          target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-teal-400 text-lg" title="LeetCode"><i class="fas fa-code"></i></a>
-  <a href="mailto:pratikunnad@gmail.com"                 class="text-gray-400 hover:text-teal-400 text-lg" title="Email"><i class="fas fa-envelope"></i></a>
+  <a href="https://github.com/pratikunnad"           target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-teal-400 text-lg" title="GitHub"><i class="fab fa-github"></i></a>
+  <a href="https://www.linkedin.com/in/pratikunnad/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-teal-400 text-lg" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+  <a href="https://www.instagram.com/pratik_unnad/"  target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-teal-400 text-lg" title="Instagram"><i class="fab fa-instagram"></i></a>
+  <a href="https://leetcode.com/u/pratikunnad/"      target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-teal-400 text-lg" title="LeetCode"><i class="fas fa-code"></i></a>
+  <a href="mailto:pratikunnad@gmail.com"             class="text-gray-400 hover:text-teal-400 text-lg" title="Email"><i class="fas fa-envelope"></i></a>
 </div>
 
 <!-- ════════════ HERO ════════════ -->
 <section id="home" class="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-6 overflow-hidden">
   <div class="hero-glow"></div>
   <div class="max-w-4xl mx-auto text-center fade-up relative z-10">
-
-    <!-- Available badge -->
     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium mb-6"
          style="background:var(--accent-dim);border:1px solid var(--accent-border);color:var(--accent)">
       <span class="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse"></span>
       Open to opportunities
     </div>
-
     <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight mb-4">
       Hi, I'm <span class="bg-gradient-to-r from-teal-300 to-cyan-400 bg-clip-text text-transparent" style="font-style:italic">Pratik Unnad</span>
     </h1>
-
-    <!-- Typed animation — Outfit keeps it clean and modern -->
     <p class="text-xl md:text-2xl font-semibold mt-2 mb-5" style="color:var(--accent);font-family:'Outfit',sans-serif;letter-spacing:0.02em">
       <span id="typed-text"></span><span class="typed-cursor">|</span>
     </p>
-
     <p class="max-w-2xl mx-auto leading-relaxed mb-8 text-base md:text-lg" style="color:#94a3b8">
       Detail-oriented Computer Science graduate from Solapur, passionate about turning raw data into meaningful insights. Skilled in Python, SQL, and data visualization — building solutions that matter.
     </p>
-
     <div class="flex flex-wrap gap-4 justify-center">
-      <a href="#projects" class="bg-teal-600 hover:bg-teal-500 text-white transition px-7 py-2.5 rounded-full text-sm font-semibold shadow-lg hover:shadow-teal-500/25 hover:-translate-y-0.5 transition-all">
+      <a href="#projects" class="bg-teal-600 hover:bg-teal-500 text-white transition px-7 py-2.5 rounded-full text-sm font-semibold shadow-lg hover:shadow-teal-500/25 hover:-translate-y-0.5">
         View My Work <i class="fas fa-arrow-down ml-1 text-xs"></i>
       </a>
       <a href="https://drive.google.com/file/d/15XTunHF21Kz6_u-hN-ABAMS773bRJp_U/view?usp=sharing"
@@ -404,42 +326,61 @@
   </div>
 </section>
 
-<!-- ════════════ STATS ════════════ -->
+<!-- ════════════ STATS — counting animation applied here ════════════ -->
 <section class="py-10 px-6 section-alt transition-colors duration-300">
-  <div class="max-w-3xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 fade-up">
+  <div class="max-w-3xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4" id="statsRow">
     <div class="glass-card stat-card">
-      <div class="stat-num">8.88</div>
+      <div class="stat-num" data-target="8.88" data-decimal="2">0.00</div>
       <div class="text-xs mt-1" style="color:#94a3b8">SGPA</div>
     </div>
     <div class="glass-card stat-card">
-      <div class="stat-num">6+</div>
+      <div class="stat-num" data-target="6" data-suffix="+">0</div>
       <div class="text-xs mt-1" style="color:#94a3b8">Certifications</div>
     </div>
     <div class="glass-card stat-card">
-      <div class="stat-num">1</div>
+      <div class="stat-num" data-target="1">0</div>
       <div class="text-xs mt-1" style="color:#94a3b8">Full‑Stack Project</div>
     </div>
     <div class="glass-card stat-card">
-      <div class="stat-num">500+</div>
+      <div class="stat-num" data-target="500" data-suffix="+">0</div>
       <div class="text-xs mt-1" style="color:#94a3b8">Users Tested</div>
     </div>
   </div>
 </section>
 
-<!-- ════════════ ABOUT ════════════ -->
+<!-- ════════════ ABOUT — with photo ════════════ -->
 <section id="about" class="py-20 px-6 transition-colors duration-300">
   <div class="max-w-4xl mx-auto">
     <div class="text-center mb-12 fade-up">
       <p class="section-label-mono mb-2" style="color:var(--accent)">Who I am</p>
       <h2 class="text-3xl md:text-4xl font-bold">About Me</h2>
     </div>
-    <div class="grid md:grid-cols-2 gap-10 items-start fade-up">
-      <div class="space-y-4 text-sm leading-relaxed" style="color:#94a3b8">
+
+    <!-- Three-column layout: photo | bio | interests -->
+    <div class="flex flex-col md:flex-row gap-10 items-start fade-up">
+
+      <!-- ── PHOTO COLUMN ── -->
+      <div class="about-photo-wrap self-center md:self-start mt-2">
+        <!--
+          REPLACE THIS: swap the placeholder div below with your actual photo tag:
+          <img src="assets/pratik.jpg" alt="Pratik Unnad" class="about-photo" />
+        -->
+        <div class="about-photo-placeholder">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.35">
+            <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+          </svg>
+          <span style="font-size:0.7rem;line-height:1.5">Add<br/>assets/pratik.jpg</span>
+        </div>
+        <div class="about-photo-badge">Data Analyst</div>
+      </div>
+
+      <!-- ── BIO COLUMN ── -->
+      <div class="flex-1 space-y-4 text-sm leading-relaxed" style="color:#94a3b8">
         <p>I'm a Computer Science graduate from <strong class="text-teal-400">D.B.F. Dayanand College, Solapur</strong> (SGPA: 8.88), with a strong foundation in data analysis, Python, SQL, and database management.</p>
-        <p>I built <strong class="text-teal-400">BharatLearn</strong> — a full-stack Learning Management System — from scratch, which sharpened my ability to design scalable database schemas and implement backend logic handling 500+ simulated user accounts.</p>
+        <p>I built <strong class="text-teal-400">BharatLearn</strong> — a full-stack Learning Management System — from scratch, sharpening my ability to design scalable database schemas and implement backend logic that handled 500+ simulated user accounts.</p>
         <p>I thrive on turning messy data into clear, actionable stories. I'm always learning — through Forage job simulations, personal projects, and competitive coding on LeetCode.</p>
         <div class="pt-2">
-          <p class="text-xs uppercase tracking-widest mb-2" style="color:var(--accent)">Languages</p>
+          <p class="section-label-mono mb-2" style="color:var(--accent)">Languages</p>
           <div class="flex flex-wrap gap-2">
             <span class="skill-tag">English</span>
             <span class="skill-tag">Marathi</span>
@@ -448,23 +389,26 @@
           </div>
         </div>
       </div>
-      <div>
-        <p class="text-xs uppercase tracking-widest mb-4" style="color:var(--accent)">Outside of code</p>
-        <div class="grid grid-cols-2 gap-3">
-          <div class="glass-card p-4 flex items-center gap-3 text-sm">
-            <span class="text-xl">🥾</span> Trekking
+
+      <!-- ── INTERESTS COLUMN ── -->
+      <div class="md:w-48 flex-shrink-0">
+        <p class="section-label-mono mb-4" style="color:var(--accent)">Outside of code</p>
+        <div class="flex flex-col gap-3">
+          <div class="glass-card px-4 py-3 flex items-center gap-3 text-sm">
+            <span class="text-lg">🥾</span> Trekking
           </div>
-          <div class="glass-card p-4 flex items-center gap-3 text-sm">
-            <span class="text-xl">📚</span> Reading
+          <div class="glass-card px-4 py-3 flex items-center gap-3 text-sm">
+            <span class="text-lg">📚</span> Reading
           </div>
-          <div class="glass-card p-4 flex items-center gap-3 text-sm">
-            <span class="text-xl">♟️</span> Chess
+          <div class="glass-card px-4 py-3 flex items-center gap-3 text-sm">
+            <span class="text-lg">♟️</span> Chess
           </div>
-          <div class="glass-card p-4 flex items-center gap-3 text-sm">
-            <span class="text-xl">🎨</span> Painting
+          <div class="glass-card px-4 py-3 flex items-center gap-3 text-sm">
+            <span class="text-lg">🎨</span> Painting
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -480,33 +424,24 @@
       <div class="glass-card p-6 fade-up">
         <h3 class="text-base font-semibold mb-4 text-teal-400"><i class="fas fa-database mr-2"></i>Data & Analytics</h3>
         <div class="flex flex-wrap gap-2">
-          <span class="skill-tag">Python</span>
-          <span class="skill-tag">SQL</span>
-          <span class="skill-tag">MySQL</span>
-          <span class="skill-tag">DBMS</span>
-          <span class="skill-tag">Excel (Pivot / VLOOKUP)</span>
-          <span class="skill-tag">Tableau</span>
-          <span class="skill-tag">Data Visualization</span>
+          <span class="skill-tag">Python</span><span class="skill-tag">SQL</span><span class="skill-tag">MySQL</span>
+          <span class="skill-tag">DBMS</span><span class="skill-tag">Excel (Pivot / VLOOKUP)</span>
+          <span class="skill-tag">Tableau</span><span class="skill-tag">Data Visualization</span>
         </div>
       </div>
       <div class="glass-card p-6 fade-up">
         <h3 class="text-base font-semibold mb-4 text-teal-400"><i class="fas fa-code mr-2"></i>Programming & Dev</h3>
         <div class="flex flex-wrap gap-2">
-          <span class="skill-tag">Python OOP</span>
-          <span class="skill-tag">File Handling</span>
-          <span class="skill-tag">Flask</span>
-          <span class="skill-tag">Full‑Stack Dev</span>
+          <span class="skill-tag">Python OOP</span><span class="skill-tag">File Handling</span>
+          <span class="skill-tag">Flask</span><span class="skill-tag">Full‑Stack Dev</span>
         </div>
       </div>
       <div class="glass-card p-6 fade-up">
         <h3 class="text-base font-semibold mb-4 text-teal-400"><i class="fas fa-users mr-2"></i>Soft Skills</h3>
         <div class="flex flex-wrap gap-2">
-          <span class="skill-tag">Communication</span>
-          <span class="skill-tag">Leadership</span>
-          <span class="skill-tag">Problem‑Solving</span>
-          <span class="skill-tag">Adaptability</span>
-          <span class="skill-tag">Time Management</span>
-          <span class="skill-tag">Quick Learning</span>
+          <span class="skill-tag">Communication</span><span class="skill-tag">Leadership</span>
+          <span class="skill-tag">Problem‑Solving</span><span class="skill-tag">Adaptability</span>
+          <span class="skill-tag">Time Management</span><span class="skill-tag">Quick Learning</span>
         </div>
       </div>
     </div>
@@ -520,26 +455,16 @@
       <p class="section-label-mono mb-2" style="color:var(--accent)">Things I've built</p>
       <h2 class="text-3xl md:text-4xl font-bold">Featured Projects</h2>
     </div>
-
-    <!-- FIX: removed the extra stray </div> that was breaking layout -->
     <div class="grid md:grid-cols-2 gap-8" id="projectsContainer">
-
-      <!-- Project 1 -->
       <div class="glass-card p-6 fade-up project-item">
         <img src="assets/lms.jpeg" alt="BharatLearn LMS Screenshot" class="project-image">
-        <div class="inline-block px-2 py-0.5 rounded text-xs mb-3" style="background:var(--accent-dim);color:var(--accent);border:1px solid var(--accent-border)">
-          Featured
-        </div>
+        <div class="inline-block px-2 py-0.5 rounded text-xs mb-3" style="background:var(--accent-dim);color:var(--accent);border:1px solid var(--accent-border)">Featured</div>
         <h3 class="text-xl font-bold">BharatLearn — Learning Management System</h3>
         <p class="text-xs mt-1 mb-3" style="color:#64748b">Nov 2025 – Feb 2026</p>
-        <p class="text-sm leading-relaxed mb-4" style="color:#94a3b8">
-          Full-stack LMS with Flask & MySQL featuring authentication, course enrollment, progress tracking, streak system, and admin analytics dashboard. Tested with 500+ simulated users.
-        </p>
+        <p class="text-sm leading-relaxed mb-4" style="color:#94a3b8">Full-stack LMS with Flask & MySQL featuring authentication, course enrollment, progress tracking, streak system, and admin analytics dashboard. Tested with 500+ simulated users.</p>
         <div class="flex flex-wrap gap-2 mb-5">
-          <span class="skill-tag text-xs">Flask</span>
-          <span class="skill-tag text-xs">MySQL</span>
-          <span class="skill-tag text-xs">Python</span>
-          <span class="skill-tag text-xs">Full Stack</span>
+          <span class="skill-tag text-xs">Flask</span><span class="skill-tag text-xs">MySQL</span>
+          <span class="skill-tag text-xs">Python</span><span class="skill-tag text-xs">Full Stack</span>
           <span class="skill-tag text-xs">DBMS</span>
         </div>
         <div class="flex gap-3">
@@ -553,20 +478,15 @@
           </a>
         </div>
       </div>
-
-      <!-- Coming Soon placeholder -->
       <div class="glass-card p-6 fade-up project-item flex flex-col items-center justify-center text-center" style="border-style:dashed;border-color:rgba(20,184,166,0.3)">
         <i class="fas fa-chart-bar text-4xl mb-4" style="color:rgba(20,184,166,0.4)"></i>
         <h3 class="text-lg font-bold mb-1">Next Project</h3>
         <p class="text-sm" style="color:#64748b">Currently building something new with data...</p>
         <p class="text-xs mt-3" style="color:rgba(20,184,166,0.5)">Coming Soon</p>
       </div>
-
-    </div><!-- END #projectsContainer — FIX: was previously unclosed correctly -->
-
+    </div>
     <div class="text-center mt-8">
-      <button id="loadMoreProjectsBtn"
-              class="text-sm px-6 py-2 rounded-full font-semibold transition hover:-translate-y-0.5"
+      <button id="loadMoreProjectsBtn" class="text-sm px-6 py-2 rounded-full font-semibold transition hover:-translate-y-0.5"
               style="background:var(--accent-dim);border:1px solid var(--accent-border);color:var(--accent)">
         <i class="fas fa-chevron-down mr-2"></i> Load More Projects
       </button>
@@ -581,10 +501,7 @@
       <p class="section-label-mono mb-2" style="color:var(--accent)">What I've earned</p>
       <h2 class="text-3xl md:text-4xl font-bold">Certifications</h2>
     </div>
-
     <div class="cert-grid" id="certificationsContainer">
-
-      <!-- Cert 1 -->
       <div class="glass-card p-5 text-center fade-up cert-item">
         <img src="assets/deloitte01.jpeg" alt="Deloitte Data Analytics Certificate" class="cert-image">
         <p class="text-xs mb-1" style="color:var(--accent)">Deloitte Australia - Forage</p>
@@ -593,8 +510,6 @@
         <p class="text-xs leading-relaxed mb-3" style="color:#94a3b8">Data analysis and business insights dashboards</p>
         <p class="text-xs mb-3" style="font-family:'JetBrains Mono',monospace;color:rgba(255,255,255,0.18)">ID: 4uS6qbyrZdR3G2LE2</p>
       </div>
-
-      <!-- Cert 2 -->
       <div class="glass-card p-5 text-center fade-up cert-item">
         <img src="assets/deloitte02.jpeg" alt="Deloitte Technology Certificate" class="cert-image">
         <p class="text-xs mb-1" style="color:var(--accent)">Deloitte Australia - Forage</p>
@@ -603,8 +518,6 @@
         <p class="text-xs leading-relaxed mb-3" style="color:#94a3b8">Dashboard proposals and coding solutions</p>
         <p class="text-xs mb-3" style="font-family:'JetBrains Mono',monospace;color:rgba(255,255,255,0.18)">ID: HxeyxCrMjueuJpcHL</p>
       </div>
-
-      <!-- Cert 3 -->
       <div class="glass-card p-5 text-center fade-up cert-item">
         <img src="assets/tata01.jpeg" alt="Tata iQ Certificate" class="cert-image">
         <p class="text-xs mb-1" style="color:var(--accent)">Tata iQ - Forage</p>
@@ -613,8 +526,6 @@
         <p class="text-xs leading-relaxed mb-3" style="color:#94a3b8">AI-powered analytics, risk profiling, predictive modeling</p>
         <p class="text-xs mb-3" style="font-family:'JetBrains Mono',monospace;color:rgba(255,255,255,0.18)">ID: BPSxf78gS4xtG3A7v</p>
       </div>
-
-      <!-- Cert 4 -->
       <div class="glass-card p-5 text-center fade-up cert-item">
         <img src="assets/british_airways01.jpeg" alt="British Airways Certificate" class="cert-image">
         <p class="text-xs mb-1" style="color:var(--accent)">British Airways - Forage</p>
@@ -622,8 +533,6 @@
         <p class="text-xs mt-1 mb-2" style="color:#64748b">Nov 2025</p>
         <p class="text-xs leading-relaxed mb-3" style="color:#94a3b8">Customer insights analysis and predictive modeling</p>
       </div>
-
-      <!-- Cert 5 -->
       <div class="glass-card p-5 text-center fade-up cert-item">
         <img src="assets/ctiga01.jpeg" alt="CTIGA Certificate" class="cert-image">
         <p class="text-xs mb-1" style="color:var(--accent)">Red Team Leaders</p>
@@ -631,8 +540,6 @@
         <p class="text-xs mt-1 mb-2" style="color:#64748b">Jan 2026</p>
         <p class="text-xs leading-relaxed mb-3" style="color:#94a3b8">Ethical, legal, and strategic governance frameworks</p>
       </div>
-
-      <!-- Cert 6 -->
       <div class="glass-card p-5 text-center fade-up cert-item">
         <img src="assets/commonwealth_bank01.jpeg" alt="Commonwealth Bank Certificate" class="cert-image">
         <p class="text-xs mb-1" style="color:var(--accent)">Commonwealth Bank - Forage</p>
@@ -640,13 +547,9 @@
         <p class="text-xs mt-1 mb-2" style="color:#64748b">Jan 2026</p>
         <p class="text-xs leading-relaxed mb-3" style="color:#94a3b8">Technology exploration and innovation challenges</p>
       </div>
-
-    </div><!-- END #certificationsContainer -->
-
-    <!-- FIX: This button was referenced in JS but completely missing from HTML -->
+    </div>
     <div class="text-center mt-8">
-      <button id="loadMoreCertsBtn"
-              class="text-sm px-6 py-2 rounded-full font-semibold transition hover:-translate-y-0.5"
+      <button id="loadMoreCertsBtn" class="text-sm px-6 py-2 rounded-full font-semibold transition hover:-translate-y-0.5"
               style="background:var(--accent-dim);border:1px solid var(--accent-border);color:var(--accent)">
         <i class="fas fa-chevron-down mr-2"></i> Load More Certifications
       </button>
@@ -661,10 +564,8 @@
       <p class="section-label-mono mb-2" style="color:var(--accent)">Academic background</p>
       <h2 class="text-3xl md:text-4xl font-bold">Education</h2>
     </div>
-    <!-- Timeline -->
     <div class="relative pl-8">
       <div class="timeline-line"></div>
-
       <div class="relative mb-8 fade-up">
         <div class="timeline-dot"></div>
         <div class="glass-card p-6">
@@ -678,7 +579,6 @@
           <p class="text-sm mt-3" style="color:#94a3b8">SGPA: <strong class="text-teal-400">8.88 / 10.00</strong></p>
         </div>
       </div>
-
       <div class="relative fade-up">
         <div class="timeline-dot"></div>
         <div class="glass-card p-6">
@@ -704,36 +604,26 @@
       <h2 class="text-3xl md:text-4xl font-bold">Get In Touch</h2>
       <p class="mt-2 text-sm" style="color:#64748b">Actively looking for opportunities. Let's talk.</p>
     </div>
-
     <div class="grid md:grid-cols-2 gap-10 fade-up">
-      <!-- Contact info -->
       <div>
         <div class="space-y-3 mb-8">
-          <a href="mailto:pratikunnad@gmail.com"
-             class="glass-card flex items-center gap-3 px-5 py-3 rounded-2xl text-sm transition hover:scale-[1.02]">
-            <i class="fas fa-envelope text-teal-400 w-5 text-center"></i>
-            <span>pratikunnad@gmail.com</span>
+          <a href="mailto:pratikunnad@gmail.com" class="glass-card flex items-center gap-3 px-5 py-3 rounded-2xl text-sm transition hover:scale-[1.02]">
+            <i class="fas fa-envelope text-teal-400 w-5 text-center"></i><span>pratikunnad@gmail.com</span>
           </a>
-          <a href="tel:+918767609417"
-             class="glass-card flex items-center gap-3 px-5 py-3 rounded-2xl text-sm transition hover:scale-[1.02]">
-            <i class="fas fa-phone text-teal-400 w-5 text-center"></i>
-            <span>+91 8767609417</span>
+          <a href="tel:+918767609417" class="glass-card flex items-center gap-3 px-5 py-3 rounded-2xl text-sm transition hover:scale-[1.02]">
+            <i class="fas fa-phone text-teal-400 w-5 text-center"></i><span>+91 8767609417</span>
           </a>
           <div class="glass-card flex items-center gap-3 px-5 py-3 rounded-2xl text-sm">
-            <i class="fas fa-map-marker-alt text-teal-400 w-5 text-center"></i>
-            <span>Solapur, Maharashtra, India</span>
+            <i class="fas fa-map-marker-alt text-teal-400 w-5 text-center"></i><span>Solapur, Maharashtra, India</span>
           </div>
         </div>
-
         <div class="flex gap-10">
-          <a href="https://github.com/pratikunnad"               target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-teal-400 text-2xl transition hover:scale-110"><i class="fab fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/pratikunnad/"     target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-teal-400 text-2xl transition hover:scale-110"><i class="fab fa-linkedin-in"></i></a>
-          <a href="https://www.instagram.com/pratik_unnad/"      target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-teal-400 text-2xl transition hover:scale-110"><i class="fab fa-instagram"></i></a>
-          <a href="https://leetcode.com/u/pratikunnad/"          target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-teal-400 text-2xl transition hover:scale-110"><i class="fas fa-code"></i></a>
+          <a href="https://github.com/pratikunnad"           target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-teal-400 text-2xl transition hover:scale-110"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/pratikunnad/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-teal-400 text-2xl transition hover:scale-110"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.instagram.com/pratik_unnad/"  target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-teal-400 text-2xl transition hover:scale-110"><i class="fab fa-instagram"></i></a>
+          <a href="https://leetcode.com/u/pratikunnad/"      target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-teal-400 text-2xl transition hover:scale-110"><i class="fas fa-code"></i></a>
         </div>
       </div>
-
-      <!-- Contact form -->
       <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" class="space-y-4" id="contactForm">
         <div>
           <label class="block text-xs mb-1.5" style="color:#64748b">Your name</label>
@@ -747,9 +637,7 @@
           <label class="block text-xs mb-1.5" style="color:#64748b">Message</label>
           <textarea name="message" rows="4" placeholder="Tell me about the opportunity..." required class="contact-input resize-y"></textarea>
         </div>
-        <button type="submit"
-                class="w-full py-2.5 rounded-full text-sm font-semibold text-black transition hover:-translate-y-0.5"
-                style="background:var(--accent)">
+        <button type="submit" class="w-full py-2.5 rounded-full text-sm font-semibold text-black transition hover:-translate-y-0.5" style="background:var(--accent)">
           Send Message <i class="fas fa-arrow-right ml-1 text-xs"></i>
         </button>
         <p id="formStatus" class="text-xs text-center hidden" style="color:var(--accent)">Message sent! I'll get back to you soon.</p>
@@ -760,18 +648,16 @@
 
 <!-- ════════════ FOOTER ════════════ -->
 <footer class="py-6 text-center text-xs border-t transition-colors duration-300" style="color:#475569">
-  <p>Designed & built by <span style="color:var(--accent)">Pratik Unnad </span> © 2026</p>
+  <p>Designed & built by <span style="color:var(--accent)">Pratik Unnad</span> © 2026</p>
 </footer>
 
 <!-- ════════════ BACK TO TOP ════════════ -->
-<button id="backToTop" title="Back to top">
-  <i class="fas fa-arrow-up text-sm"></i>
-</button>
+<button id="backToTop" title="Back to top"><i class="fas fa-arrow-up text-sm"></i></button>
 
 <!-- ════════════ JAVASCRIPT ════════════ -->
 <script>
   /* ── TYPED ANIMATION ── */
-  const phrases = ['BCS Graduate', 'Data Analyst', 'SQL & Python Developer' ];
+  const phrases = ['BCS Graduate', 'Data Analyst', 'SQL & Python Developer'];
   let pi = 0, ci = 0, deleting = false;
   const typedEl = document.getElementById('typed-text');
   function type() {
@@ -787,11 +673,79 @@
   }
   setTimeout(type, 600);
 
+  /* ════════════════════════════════════════════════════
+     COUNTING ANIMATION
+     Reads data-target, data-suffix, data-decimal from
+     each .stat-num element and counts up with easing
+     once the stats row enters the viewport.
+  ════════════════════════════════════════════════════ */
+  function animateCount(el) {
+    const target   = parseFloat(el.dataset.target);
+    const suffix   = el.dataset.suffix  || '';
+    const decimals = parseInt(el.dataset.decimal || '0', 10);
+    const duration = 1800;     // ms
+    const start    = performance.now();
+
+    function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
+
+    function step(now) {
+      const elapsed  = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased    = easeOutQuart(progress);
+      const current  = target * eased;
+      el.textContent = current.toFixed(decimals) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = target.toFixed(decimals) + suffix;
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* Trigger counting when stats row scrolls into view (fires once) */
+  let statsCounted = false;
+  const statsObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !statsCounted) {
+        statsCounted = true;
+        document.querySelectorAll('#statsRow .stat-num[data-target]').forEach(animateCount);
+        statsObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.4 });
+  statsObserver.observe(document.getElementById('statsRow'));
+
+  /* ── COUNTING ANIMATION ── */
+function countUp(el) {
+  const target   = parseFloat(el.dataset.target);
+  const suffix   = el.dataset.suffix  || '';
+  const decimals = parseInt(el.dataset.decimal || '0', 10);
+  const duration = 2000;
+  const startVal = performance.now();
+
+  function ease(t) { return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2; }
+
+  function tick(now) {
+    const t   = Math.min((now - startVal) / duration, 1);
+    const val = target * ease(t);
+    el.textContent = val.toFixed(decimals) + suffix;
+    if (t < 1) requestAnimationFrame(tick);
+    else el.textContent = target.toFixed(decimals) + suffix;
+  }
+  el.textContent = (0).toFixed(decimals) + suffix;
+  requestAnimationFrame(tick);
+}
+
+const statsObs = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting) {
+    document.querySelectorAll('#statsRow .stat-num[data-target]').forEach(countUp);
+    statsObs.disconnect();
+  }
+}, { threshold: 0.5 });
+statsObs.observe(document.getElementById('statsRow'));
+
   /* ── THEME TOGGLE ── */
   const body = document.body;
   const desktopBtn = document.getElementById('themeToggleDesktop');
   const mobileBtn  = document.getElementById('themeToggleMobile');
-
   function setTheme(isDark) {
     body.classList.toggle('dark', isDark);
     body.classList.toggle('light', !isDark);
@@ -808,7 +762,6 @@
   const menuBtn    = document.getElementById('menuBtn');
   const mobileMenu = document.getElementById('mobileMenu');
   menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-  // FIX: use event delegation so links reliably close the menu
   mobileMenu.addEventListener('click', e => {
     if (e.target.classList.contains('mobile-link')) mobileMenu.classList.add('hidden');
   });
@@ -825,10 +778,7 @@
   function updateNav() {
     let cur = '';
     sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
-    navLinks.forEach(a => {
-      const active = a.getAttribute('href') === '#' + cur;
-      a.style.color = active ? 'var(--accent)' : '';
-    });
+    navLinks.forEach(a => { a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--accent)' : ''; });
   }
   window.addEventListener('scroll', updateNav, { passive: true });
   updateNav();
@@ -843,52 +793,32 @@
   let projectsOpen = false;
   moreProjectsBtn.addEventListener('click', () => {
     projectsOpen = !projectsOpen;
-    document.querySelectorAll('#projectsContainer .project-item.hidden-item')
-      .forEach(el => el.classList.toggle('hidden-item', !projectsOpen));
-    moreProjectsBtn.innerHTML = projectsOpen
-      ? '<i class="fas fa-chevron-up mr-2"></i> Show Less'
-      : '<i class="fas fa-chevron-down mr-2"></i> Load More Projects';
+    document.querySelectorAll('#projectsContainer .project-item.hidden-item').forEach(el => el.classList.toggle('hidden-item', !projectsOpen));
+    moreProjectsBtn.innerHTML = projectsOpen ? '<i class="fas fa-chevron-up mr-2"></i> Show Less' : '<i class="fas fa-chevron-down mr-2"></i> Load More Projects';
   });
 
-  /* ── LOAD MORE CERTS (FIX: button now exists in HTML) ── */
+  /* ── LOAD MORE CERTS ── */
   const moreCertsBtn = document.getElementById('loadMoreCertsBtn');
   let certsOpen = false;
   moreCertsBtn.addEventListener('click', () => {
     certsOpen = !certsOpen;
-    document.querySelectorAll('#certificationsContainer .cert-item.hidden-item')
-      .forEach(el => el.classList.toggle('hidden-item', !certsOpen));
-    moreCertsBtn.innerHTML = certsOpen
-      ? '<i class="fas fa-chevron-up mr-2"></i> Show Less'
-      : '<i class="fas fa-chevron-down mr-2"></i> Load More Certifications';
+    document.querySelectorAll('#certificationsContainer .cert-item.hidden-item').forEach(el => el.classList.toggle('hidden-item', !certsOpen));
+    moreCertsBtn.innerHTML = certsOpen ? '<i class="fas fa-chevron-up mr-2"></i> Show Less' : '<i class="fas fa-chevron-down mr-2"></i> Load More Certifications';
   });
 
   /* ── CONTACT FORM FEEDBACK ── */
-  const contactForm   = document.getElementById('contactForm');
-  const formStatus    = document.getElementById('formStatus');
+  const contactForm = document.getElementById('contactForm');
+  const formStatus  = document.getElementById('formStatus');
   contactForm.addEventListener('submit', async e => {
     e.preventDefault();
     const btn = contactForm.querySelector('button[type=submit]');
     btn.textContent = 'Sending...';
     btn.disabled = true;
     try {
-      const res = await fetch(contactForm.action, {
-        method: 'POST',
-        body: new FormData(contactForm),
-        headers: { Accept: 'application/json' }
-      });
-      if (res.ok) {
-        formStatus.classList.remove('hidden');
-        contactForm.reset();
-      } else {
-        formStatus.textContent = 'Something went wrong. Try emailing directly.';
-        formStatus.style.color = '#f87171';
-        formStatus.classList.remove('hidden');
-      }
-    } catch {
-      formStatus.textContent = 'Network error. Please try again.';
-      formStatus.style.color = '#f87171';
-      formStatus.classList.remove('hidden');
-    }
+      const res = await fetch(contactForm.action, { method: 'POST', body: new FormData(contactForm), headers: { Accept: 'application/json' } });
+      if (res.ok) { formStatus.classList.remove('hidden'); contactForm.reset(); }
+      else { formStatus.textContent = 'Something went wrong. Try emailing directly.'; formStatus.style.color = '#f87171'; formStatus.classList.remove('hidden'); }
+    } catch { formStatus.textContent = 'Network error. Please try again.'; formStatus.style.color = '#f87171'; formStatus.classList.remove('hidden'); }
     btn.textContent = 'Send Message →';
     btn.disabled = false;
   });
