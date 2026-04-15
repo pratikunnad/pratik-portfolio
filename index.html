@@ -331,19 +331,19 @@
 <section class="py-10 px-6 section-alt transition-colors duration-300">
   <div class="max-w-3xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4" id="statsRow">
     <div class="glass-card stat-card">
-      <div class="stat-num" data-target="8.88" data-decimal="2">8.88</div>
+      <div class="stat-num" data-target="8.88" data-decimal="2">0.00</div>
       <div class="text-xs mt-1" style="color:#94a3b8">SGPA</div>
     </div>
     <div class="glass-card stat-card">
-      <div class="stat-num" data-target="6" data-suffix="+">6</div>
+      <div class="stat-num" data-target="6" data-suffix="+">0</div>
       <div class="text-xs mt-1" style="color:#94a3b8">Certifications</div>
     </div>
     <div class="glass-card stat-card">
-      <div class="stat-num" data-target="1">1</div>
+      <div class="stat-num" data-target="1">0</div>
       <div class="text-xs mt-1" style="color:#94a3b8">Full-Stack Project</div>
     </div>
     <div class="glass-card stat-card">
-      <div class="stat-num" data-target="500+" data-suffix="+">0</div>
+      <div class="stat-num" data-target="500" data-suffix="+">0</div>
       <div class="text-xs mt-1" style="color:#94a3b8">Users Tested</div>
     </div>
   </div>
@@ -664,74 +664,34 @@
   }
   setTimeout(type, 600);
 
-  /* ════════════════════════════════════════════════════
-     COUNTING ANIMATION
-     Reads data-target, data-suffix, data-decimal from
-     each .stat-num element and counts up with easing
-     once the stats row enters the viewport.
-  ════════════════════════════════════════════════════ */
-  function animateCount(el) {
+  /* ── COUNTING ANIMATION ── */
+  function countUp(el) {
     const target   = parseFloat(el.dataset.target);
     const suffix   = el.dataset.suffix  || '';
     const decimals = parseInt(el.dataset.decimal || '0', 10);
-    const duration = 1800;     // ms
-    const start    = performance.now();
+    const duration = 2000;
+    const startVal = performance.now();
 
-    function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
+    function ease(t) { return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2; }
 
-    function step(now) {
-      const elapsed  = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased    = easeOutQuart(progress);
-      const current  = target * eased;
-      el.textContent = current.toFixed(decimals) + suffix;
-      if (progress < 1) requestAnimationFrame(step);
+    function tick(now) {
+      const t   = Math.min((now - startVal) / duration, 1);
+      const val = target * ease(t);
+      el.textContent = val.toFixed(decimals) + suffix;
+      if (t < 1) requestAnimationFrame(tick);
       else el.textContent = target.toFixed(decimals) + suffix;
     }
-    requestAnimationFrame(step);
+    el.textContent = (0).toFixed(decimals) + suffix;
+    requestAnimationFrame(tick);
   }
 
-  /* Trigger counting when stats row scrolls into view (fires once) */
-  let statsCounted = false;
-  const statsObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !statsCounted) {
-        statsCounted = true;
-        document.querySelectorAll('#statsRow .stat-num[data-target]').forEach(animateCount);
-        statsObserver.disconnect();
-      }
-    });
-  }, { threshold: 0.4 });
-  statsObserver.observe(document.getElementById('statsRow'));
-
-  /* ── COUNTING ANIMATION ── */
-function countUp(el) {
-  const target   = parseFloat(el.dataset.target);
-  const suffix   = el.dataset.suffix  || '';
-  const decimals = parseInt(el.dataset.decimal || '0', 10);
-  const duration = 2000;
-  const startVal = performance.now();
-
-  function ease(t) { return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2; }
-
-  function tick(now) {
-    const t   = Math.min((now - startVal) / duration, 1);
-    const val = target * ease(t);
-    el.textContent = val.toFixed(decimals) + suffix;
-    if (t < 1) requestAnimationFrame(tick);
-    else el.textContent = target.toFixed(decimals) + suffix;
-  }
-  el.textContent = (0).toFixed(decimals) + suffix;
-  requestAnimationFrame(tick);
-}
-
-const statsObs = new IntersectionObserver(entries => {
-  if (entries[0].isIntersecting) {
-    document.querySelectorAll('#statsRow .stat-num[data-target]').forEach(countUp);
-    statsObs.disconnect();
-  }
-}, { threshold: 0.5 });
-statsObs.observe(document.getElementById('statsRow'));
+  const statsObs = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      document.querySelectorAll('#statsRow .stat-num[data-target]').forEach(countUp);
+      statsObs.disconnect();
+    }
+  }, { threshold: 0.5 });
+  statsObs.observe(document.getElementById('statsRow'));
 
   /* ── THEME TOGGLE ── */
   const body = document.body;
