@@ -759,13 +759,87 @@
     moreProjectsBtn.innerHTML = projectsOpen ? '<i class="fas fa-chevron-up mr-2"></i> Show Less' : '<i class="fas fa-chevron-down mr-2"></i> Load More Projects';
   });
 
-  /* ── LOAD MORE CERTS ── */
+  /* ── LOAD MORE CERTS ── (FIXED) */
   const moreCertsBtn = document.getElementById('loadMoreCertsBtn');
   let certsOpen = false;
+
+  // Function to update hidden state of certificates based on index (first 6 visible, rest hidden)
+  function applyInitialCertVisibility() {
+    const container = document.getElementById('certificationsContainer');
+    const items = Array.from(container.querySelectorAll('.cert-item'));
+    items.forEach((item, idx) => {
+      if (idx >= 6) {
+        item.classList.add('hidden-item');
+      } else {
+        item.classList.remove('hidden-item');
+      }
+    });
+    // Reset load more button state
+    certsOpen = false;
+    moreCertsBtn.innerHTML = '<i class="fas fa-chevron-down mr-2"></i> Load More Certifications';
+  }
+
+  // Sort certificates and then apply visibility
+  function sortCertificates() {
+    const container = document.getElementById('certificationsContainer');
+    if (!container) return;
+    const items = Array.from(container.querySelectorAll('.cert-item'));
+    
+    // Parse dates and assign sort values
+    items.forEach(item => {
+      const dateElem = item.querySelector('p[style*="color:#64748b"]');
+      if (dateElem) {
+        const dateStr = dateElem.innerText.trim();
+        let month = 0, year = 0;
+        const months = { jan:1, feb:2, mar:3, apr:4, may:5, jun:6, jul:7, aug:8, sep:9, oct:10, nov:11, dec:12 };
+        const parts = dateStr.split(' ');
+        if (parts.length === 2) {
+          const monthName = parts[0].toLowerCase().slice(0,3);
+          year = parseInt(parts[1], 10);
+          month = months[monthName] || 1;
+        }
+        const sortValue = year * 12 + month;
+        item.setAttribute('data-sort', sortValue);
+      } else {
+        item.setAttribute('data-sort', 0);
+      }
+    });
+    
+    // Sort newest first
+    items.sort((a, b) => {
+      const aVal = parseInt(a.getAttribute('data-sort'), 10) || 0;
+      const bVal = parseInt(b.getAttribute('data-sort'), 10) || 0;
+      return bVal - aVal;
+    });
+    
+    // Reorder DOM
+    items.forEach(item => container.appendChild(item));
+    
+    // Apply initial visibility (first 6 visible, rest hidden)
+    applyInitialCertVisibility();
+  }
+  
+  // Run sorting when DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', sortCertificates);
+  } else {
+    sortCertificates();
+  }
+  
+  // Load More button handler (toggles hidden items beyond first 6)
   moreCertsBtn.addEventListener('click', () => {
-    certsOpen = !certsOpen;
-    document.querySelectorAll('#certificationsContainer .cert-item.hidden-item').forEach(el => el.classList.toggle('hidden-item', !certsOpen));
-    moreCertsBtn.innerHTML = certsOpen ? '<i class="fas fa-chevron-up mr-2"></i> Show Less' : '<i class="fas fa-chevron-down mr-2"></i> Load More Certifications';
+    const container = document.getElementById('certificationsContainer');
+    const items = Array.from(container.querySelectorAll('.cert-item'));
+    const hiddenItems = items.slice(6); // all items beyond the first 6
+    if (!certsOpen) {
+      hiddenItems.forEach(item => item.classList.remove('hidden-item'));
+      moreCertsBtn.innerHTML = '<i class="fas fa-chevron-up mr-2"></i> Show Less';
+      certsOpen = true;
+    } else {
+      hiddenItems.forEach(item => item.classList.add('hidden-item'));
+      moreCertsBtn.innerHTML = '<i class="fas fa-chevron-down mr-2"></i> Load More Certifications';
+      certsOpen = false;
+    }
   });
 
   /* ── CONTACT FORM FEEDBACK ── */
@@ -784,45 +858,6 @@
     btn.textContent = 'Send Message →';
     btn.disabled = false;
   });
-
-  /* ── NEW: SORT CERTIFICATIONS (NEWEST TO OLDEST) ── */
-  function sortCertificates() {
-    const container = document.getElementById('certificationsContainer');
-    if (!container) return;
-    const items = Array.from(container.querySelectorAll('.cert-item'));
-    // Parse date from the <p> with style="color:#64748b" (the date text like "Jan 2026")
-    items.forEach(item => {
-      const dateElem = item.querySelector('p[style*="color:#64748b"]');
-      if (dateElem) {
-        const dateStr = dateElem.innerText.trim(); // e.g., "Jan 2026"
-        let month = 0, year = 0;
-        const months = { jan:1, feb:2, mar:3, apr:4, may:5, jun:6, jul:7, aug:8, sep:9, oct:10, nov:11, dec:12 };
-        const parts = dateStr.split(' ');
-        if (parts.length === 2) {
-          const monthName = parts[0].toLowerCase().slice(0,3);
-          year = parseInt(parts[1], 10);
-          month = months[monthName] || 1;
-        }
-        const sortValue = year * 12 + month; // larger = newer
-        item.setAttribute('data-sort', sortValue);
-      } else {
-        item.setAttribute('data-sort', 0);
-      }
-    });
-    items.sort((a, b) => {
-      const aVal = parseInt(a.getAttribute('data-sort'), 10) || 0;
-      const bVal = parseInt(b.getAttribute('data-sort'), 10) || 0;
-      return bVal - aVal; // newest first
-    });
-    // Reorder DOM
-    items.forEach(item => container.appendChild(item));
-  }
-  // Run sorting once DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', sortCertificates);
-  } else {
-    sortCertificates();
-  }
 </script>
 </body>
 </html>
