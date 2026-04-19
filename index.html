@@ -773,6 +773,45 @@
     btn.textContent = 'Send Message →';
     btn.disabled = false;
   });
+
+  /* ── NEW: SORT CERTIFICATIONS (NEWEST TO OLDEST) ── */
+  function sortCertificates() {
+    const container = document.getElementById('certificationsContainer');
+    if (!container) return;
+    const items = Array.from(container.querySelectorAll('.cert-item'));
+    // Parse date from the <p> with style="color:#64748b" (the date text like "Jan 2026")
+    items.forEach(item => {
+      const dateElem = item.querySelector('p[style*="color:#64748b"]');
+      if (dateElem) {
+        const dateStr = dateElem.innerText.trim(); // e.g., "Jan 2026"
+        let month = 0, year = 0;
+        const months = { jan:1, feb:2, mar:3, apr:4, may:5, jun:6, jul:7, aug:8, sep:9, oct:10, nov:11, dec:12 };
+        const parts = dateStr.split(' ');
+        if (parts.length === 2) {
+          const monthName = parts[0].toLowerCase().slice(0,3);
+          year = parseInt(parts[1], 10);
+          month = months[monthName] || 1;
+        }
+        const sortValue = year * 12 + month; // larger = newer
+        item.setAttribute('data-sort', sortValue);
+      } else {
+        item.setAttribute('data-sort', 0);
+      }
+    });
+    items.sort((a, b) => {
+      const aVal = parseInt(a.getAttribute('data-sort'), 10) || 0;
+      const bVal = parseInt(b.getAttribute('data-sort'), 10) || 0;
+      return bVal - aVal; // newest first
+    });
+    // Reorder DOM
+    items.forEach(item => container.appendChild(item));
+  }
+  // Run sorting once DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', sortCertificates);
+  } else {
+    sortCertificates();
+  }
 </script>
 </body>
 </html>
