@@ -123,6 +123,21 @@
     .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
     .hidden-item { display: none !important; }
 
+    /* ── CERTIFICATE ID TEXT - FIX FOR LIGHT MODE ── */
+    .cert-id {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      margin-top: 0.5rem;
+      margin-bottom: 0.25rem;
+      word-break: break-all;
+    }
+    body.dark .cert-id {
+      color: rgba(255,255,255,0.25);
+    }
+    body.light .cert-id {
+      color: #94a3b8;
+    }
+
     /* ── BACK TO TOP ── */
     #backToTop {
       position: fixed; bottom: 2rem; right: 2rem;
@@ -499,7 +514,7 @@
         <h3 class="font-bold text-sm leading-snug">Data Analytics Job Simulation</h3>
         <p class="text-xs mt-1 mb-2" style="color:#64748b">Aug 2025</p>
         <p class="text-xs leading-relaxed mb-3" style="color:#94a3b8">Data analysis and business insights dashboards</p>
-        <p class="text-xs mb-3" style="font-family:'JetBrains Mono',monospace;color:rgba(255,255,255,0.18)">ID: 4uS6qbyrZdR3G2LE2</p>
+        <p class="cert-id">ID: 4uS6qbyrZdR3G2LE2</p>
       </div>
       <div class="glass-card p-5 text-center fade-up cert-item">
         <img src="assets/deloitte02.jpeg" alt="Deloitte Technology Certificate" class="cert-image">
@@ -507,7 +522,7 @@
         <h3 class="font-bold text-sm leading-snug">Technology Job Simulation</h3>
         <p class="text-xs mt-1 mb-2" style="color:#64748b">Oct 2025</p>
         <p class="text-xs leading-relaxed mb-3" style="color:#94a3b8">Dashboard proposals and coding solutions</p>
-        <p class="text-xs mb-3" style="font-family:'JetBrains Mono',monospace;color:rgba(255,255,255,0.18)">ID: HxeyxCrMjueuJpcHL</p>
+        <p class="cert-id">ID: HxeyxCrMjueuJpcHL</p>
       </div>
       <div class="glass-card p-5 text-center fade-up cert-item">
         <img src="assets/tata01.jpeg" alt="Tata iQ Certificate" class="cert-image">
@@ -515,7 +530,7 @@
         <h3 class="font-bold text-sm leading-snug">GenAI Powered Data Analytics</h3>
         <p class="text-xs mt-1 mb-2" style="color:#64748b">Oct 2025</p>
         <p class="text-xs leading-relaxed mb-3" style="color:#94a3b8">AI-powered analytics, risk profiling, predictive modeling</p>
-        <p class="text-xs mb-3" style="font-family:'JetBrains Mono',monospace;color:rgba(255,255,255,0.18)">ID: BPSxf78gS4xtG3A7v</p>
+        <p class="cert-id">ID: BPSxf78gS4xtG3A7v</p>
       </div>
       <div class="glass-card p-5 text-center fade-up cert-item">
         <img src="assets/british_airways01.jpeg" alt="British Airways Certificate" class="cert-image">
@@ -523,7 +538,7 @@
         <h3 class="font-bold text-sm leading-snug">Data Science Job Simulation</h3>
         <p class="text-xs mt-1 mb-2" style="color:#64748b">Nov 2025</p>
         <p class="text-xs leading-relaxed mb-3" style="color:#94a3b8">Customer insights analysis and predictive modeling</p>
-        <p class="text-xs mb-3" style="font-family:'JetBrains Mono',monospace;color:rgba(255,255,255,0.18)">ID: MLNYSF8Zozmyojwz4</p>
+        <p class="cert-id">ID: MLNYSF8Zozmyojwz4</p>
       </div>
       <div class="glass-card p-5 text-center fade-up cert-item">
         <img src="assets/ctiga01.jpeg" alt="CTIGA Certificate" class="cert-image">
@@ -531,7 +546,7 @@
         <h3 class="font-bold text-sm leading-snug">CTIGA — Threat Intelligence & Governance</h3>
         <p class="text-xs mt-1 mb-2" style="color:#64748b">Jan 2026</p>
         <p class="text-xs leading-relaxed mb-3" style="color:#94a3b8">Ethical, legal, and strategic governance frameworks</p>
-        <p class="text-xs mb-3" style="font-family:'JetBrains Mono',monospace;color:rgba(255,255,255,0.18)">ID: d5d7710e77e4a372</p>
+        <p class="cert-id">ID: d5d7710e77e4a372</p>
       </div>
       <div class="glass-card p-5 text-center fade-up cert-item">
         <img src="assets/commonwealth_bank01.jpeg" alt="Commonwealth Bank Certificate" class="cert-image">
@@ -539,7 +554,7 @@
         <h3 class="font-bold text-sm leading-snug">Tech Explorer Simulation</h3>
         <p class="text-xs mt-1 mb-2" style="color:#64748b">Jan 2026</p>
         <p class="text-xs leading-relaxed mb-3" style="color:#94a3b8">Technology exploration and innovation challenges</p>
-        <p class="text-xs mb-3" style="font-family:'JetBrains Mono',monospace;color:rgba(255,255,255,0.18)">ID: wpxCjSgTNohWL2tyZ</p>
+        <p class="cert-id">ID: wpxCjSgTNohWL2tyZ</p>
       </div>
       <div class="glass-card p-5 text-center fade-up cert-item">
         <img src="assets/tata_data_visualisation.jpg" alt="Tata's Data Visualisation: Empowering Business with Effective Insights" class="cert-image">
@@ -547,7 +562,7 @@
         <h3 class="font-bold text-sm leading-snug">Data Visualisation: Empowering Business with Effective Insights</h3>
         <p class="text-xs mt-1 mb-2" style="color:#64748b">April 2026</p>
         <p class="text-xs leading-relaxed mb-3" style="color:#94a3b8">Technology exploration and innovation challenges</p>
-        <p class="text-xs mb-3" style="font-family:'JetBrains Mono',monospace;color:rgba(255,255,255,0.18)">ID: txoLdZ9a4AxFSQBTn</p>
+        <p class="cert-id">ID: txoLdZ9a4AxFSQBTn</p>
       </div>
     </div>
     <div class="text-center mt-8">
@@ -759,11 +774,10 @@
     moreProjectsBtn.innerHTML = projectsOpen ? '<i class="fas fa-chevron-up mr-2"></i> Show Less' : '<i class="fas fa-chevron-down mr-2"></i> Load More Projects';
   });
 
-  /* ── LOAD MORE CERTS ── (FIXED) */
+  /* ── LOAD MORE CERTS ── */
   const moreCertsBtn = document.getElementById('loadMoreCertsBtn');
   let certsOpen = false;
 
-  // Function to update hidden state of certificates based on index (first 6 visible, rest hidden)
   function applyInitialCertVisibility() {
     const container = document.getElementById('certificationsContainer');
     const items = Array.from(container.querySelectorAll('.cert-item'));
@@ -774,18 +788,15 @@
         item.classList.remove('hidden-item');
       }
     });
-    // Reset load more button state
     certsOpen = false;
     moreCertsBtn.innerHTML = '<i class="fas fa-chevron-down mr-2"></i> Load More Certifications';
   }
 
-  // Sort certificates and then apply visibility
   function sortCertificates() {
     const container = document.getElementById('certificationsContainer');
     if (!container) return;
     const items = Array.from(container.querySelectorAll('.cert-item'));
     
-    // Parse dates and assign sort values
     items.forEach(item => {
       const dateElem = item.querySelector('p[style*="color:#64748b"]');
       if (dateElem) {
@@ -805,32 +816,26 @@
       }
     });
     
-    // Sort newest first
     items.sort((a, b) => {
       const aVal = parseInt(a.getAttribute('data-sort'), 10) || 0;
       const bVal = parseInt(b.getAttribute('data-sort'), 10) || 0;
       return bVal - aVal;
     });
     
-    // Reorder DOM
     items.forEach(item => container.appendChild(item));
-    
-    // Apply initial visibility (first 6 visible, rest hidden)
     applyInitialCertVisibility();
   }
   
-  // Run sorting when DOM ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', sortCertificates);
   } else {
     sortCertificates();
   }
   
-  // Load More button handler (toggles hidden items beyond first 6)
   moreCertsBtn.addEventListener('click', () => {
     const container = document.getElementById('certificationsContainer');
     const items = Array.from(container.querySelectorAll('.cert-item'));
-    const hiddenItems = items.slice(6); // all items beyond the first 6
+    const hiddenItems = items.slice(6);
     if (!certsOpen) {
       hiddenItems.forEach(item => item.classList.remove('hidden-item'));
       moreCertsBtn.innerHTML = '<i class="fas fa-chevron-up mr-2"></i> Show Less';
