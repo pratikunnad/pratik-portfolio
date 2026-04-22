@@ -47,8 +47,28 @@
 
     /* ── GLASS CARD ── */
     .glass-card {
+      position: relative;
+      overflow: hidden;
       border-radius: 1.25rem;
       transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      will-change: transform;
+      transform-style: preserve-3d;
+    }
+    .glass-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0;
+      background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 255, 255, 0.12) 0%, transparent 60%);
+      transition: opacity 0.3s ease;
+      z-index: 10;
+    }
+    body.light .glass-card::after {
+      background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 255, 255, 0.4) 0%, transparent 60%);
+    }
+    .glass-card:hover::after {
+      opacity: 1;
     }
     body.dark .glass-card {
       background: rgba(15,23,38,0.85);
@@ -862,6 +882,79 @@
     } catch { formStatus.textContent = 'Network error. Please try again.'; formStatus.style.color = '#f87171'; formStatus.classList.remove('hidden'); }
     btn.textContent = 'Send Message →';
     btn.disabled = false;
+  });
+
+  /* ── MAGNETIC BUTTONS ── */
+  const autoMagneticSelectors = [
+    '#themeToggleDesktop', '#themeToggleMobile', '#menuBtn',
+    '.sidebar a',
+    '#home a', 
+    '.project-item a', 
+    '#loadMoreProjectsBtn', '#loadMoreCertsBtn',
+    '#contact .flex.gap-10 a', '#contactForm button[type="submit"]', 
+    '#backToTop'
+  ];
+  autoMagneticSelectors.forEach(selector => {
+    document.querySelectorAll(selector).forEach(el => el.classList.add('magnetic'));
+  });
+
+  const magneticEls = document.querySelectorAll('.magnetic');
+  magneticEls.forEach((el) => {
+    let baseScale = '';
+    let baseY = '';
+    if (el.classList.contains('hover:scale-110') || el.closest('.sidebar') || el.closest('.flex.gap-10')) {
+      baseScale = 'scale(1.1)';
+    }
+    if (el.classList.contains('hover:-translate-y-0.5') || el.id === 'backToTop') {
+      baseY = 'translateY(-4px)';
+    }
+
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      const pull = 0.35;
+      
+      el.style.transform = `translate(${x * pull}px, ${y * pull}px) ${baseScale} ${baseY}`;
+      el.style.transition = 'transform 0.1s cubic-bezier(0.25, 1, 0.5, 1)';
+    });
+    
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = ''; 
+      el.style.transition = 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)';
+    });
+  });
+
+  /* ── 3D TILT & GLARE EFFECT ── */
+  const glassCards = document.querySelectorAll('.glass-card');
+  glassCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const rotateX = ((y - centerY) / centerY) * -6;
+      const rotateY = ((x - centerX) / centerX) * 6;
+      
+      let baseHover = 'translateY(-5px)';
+      if (card.classList.contains('hover:scale-[1.02]')) {
+         baseHover = 'scale(1.02)';
+      }
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) ${baseHover}`;
+      card.style.setProperty('--gx', `${(x / rect.width) * 100}%`);
+      card.style.setProperty('--gy', `${(y / rect.height) * 100}%`);
+      
+      card.style.transition = 'transform 0.1s linear, border-color 0.3s ease, box-shadow 0.3s ease';
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+      card.style.transition = 'transform 0.5s ease-out, border-color 0.3s ease, box-shadow 0.3s ease';
+      card.style.setProperty('--gx', `50%`);
+      card.style.setProperty('--gy', `50%`);
+    });
   });
 </script>
 </body>
